@@ -1,5 +1,55 @@
-import { useTranslation } from '../hooks/useTranslation';
+import { useState, useEffect, useContext } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { LanguageContext } from '../context/LanguageContext';
+
+// Crossfades through an array of phrases every 4 seconds.
+// Resets immediately when the phrases array reference changes (language switch).
+function RotatingPhrase({ phrases }) {
+  const { language } = useContext(LanguageContext);
+  const [idx, setIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    // Snap to first phrase instantly on language change
+    setIdx(0);
+    setVisible(true);
+
+    if (phrases.length <= 1) return;
+
+    let timeoutId;
+    const intervalId = setInterval(() => {
+      setVisible(false);
+      timeoutId = setTimeout(() => {
+        setIdx((prev) => (prev + 1) % phrases.length);
+        setVisible(true);
+      }, 500);
+    }, 4000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [phrases]); // phrases reference changes when language toggles
+
+  const isKhmer = language === 'km';
+
+  return (
+    <p
+      className={`text-xl md:text-2xl font-semibold text-white/50 leading-relaxed ${
+        isKhmer ? 'font-khmer' : 'font-display italic'
+      }`}
+      style={{
+        transition: 'opacity 0.5s ease, transform 0.5s ease',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(-8px)',
+        minHeight: '1.8em',
+      }}
+    >
+      {phrases[idx]}
+    </p>
+  );
+}
 
 export default function Hero() {
   const t = useTranslation();
@@ -19,9 +69,12 @@ export default function Hero() {
               <span className="w-8 h-px bg-lime" />
               <span className="text-xs font-medium tracking-[0.18em] uppercase text-lime">{t.hero.eyebrow}</span>
             </div>
-            <p className="font-khmer text-xl md:text-2xl lg:text-3xl font-semibold text-white/50 leading-relaxed animate-[fadeUp_0.8s_0.4s_ease_both]">
-              {t.hero.headlineKhmer}
-            </p>
+
+            {/* Rotating phrase — language-aware */}
+            <div className="animate-[fadeUp_0.8s_0.4s_ease_both]">
+              <RotatingPhrase phrases={t.hero.rotatingPhrases} />
+            </div>
+
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-cream leading-[1.05] tracking-tight animate-[fadeUp_0.8s_0.55s_ease_both]">
               {t.hero.headline}
             </h1>
@@ -29,7 +82,7 @@ export default function Hero() {
               {t.hero.description}
             </p>
             <div className="flex flex-wrap items-center gap-4 animate-[fadeUp_0.8s_0.85s_ease_both]">
-              <a href="#help" className="inline-flex items-center gap-2 bg-gradient-to-r from-orange to-orange-dark text-white text-sm font-semibold tracking-wide uppercase px-7 py-3.5 rounded-full hover:shadow-xl hover:shadow-orange/30 transition-all hover:-translate-y-0.5">
+              <a href="#help" className="inline-flex items-center gap-2 bg-linear-to-r from-orange to-orange-dark text-white text-sm font-semibold tracking-wide uppercase px-7 py-3.5 rounded-full hover:shadow-xl hover:shadow-orange/30 transition-all hover:-translate-y-0.5">
                 {t.hero.cta} <ArrowRight size={16} />
               </a>
               <a href="#about" className="text-sm font-medium tracking-wide uppercase text-white/60 border-b border-white/20 pb-0.5 hover:text-lime hover:border-lime transition-colors">
@@ -40,18 +93,18 @@ export default function Hero() {
           </div>
 
           <div className="md:col-span-2 flex md:justify-end animate-[fadeUp_0.8s_1s_ease_both]">
-            <div className="flex flex-row md:flex-col gap-8 md:gap-10 border-t md:border-t-0 md:border-l border-lime/30 pt-6 md:pt-0 md:pl-10">
+            <div className="flex flex-row md:flex-col gap-5 md:gap-10 border-t md:border-t-0 md:border-l border-lime/30 pt-6 md:pt-0 md:pl-10">
               <div>
-                <div className="font-display text-5xl md:text-6xl font-bold text-cream leading-none">270<span className="text-orange">+</span></div>
-                <p className="text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Children Supported</p>
+                <div className="font-display text-4xl md:text-6xl font-bold text-cream leading-none">270<span className="text-orange">+</span></div>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Children Supported</p>
               </div>
               <div>
-                <div className="font-display text-5xl md:text-6xl font-bold text-cream leading-none">3</div>
-                <p className="text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Day Campaign</p>
+                <div className="font-display text-4xl md:text-6xl font-bold text-cream leading-none">3</div>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Day Campaign</p>
               </div>
               <div>
-                <div className="font-display text-5xl md:text-6xl font-bold text-lime leading-none">&infin;</div>
-                <p className="text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Smiles Created</p>
+                <div className="font-display text-4xl md:text-6xl font-bold text-lime leading-none">1000<span className="text-orange">+</span></div>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Smiles Created</p>
               </div>
             </div>
           </div>

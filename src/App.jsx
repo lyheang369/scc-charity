@@ -20,7 +20,7 @@ export default function App() {
         <Impact />
         <EventDetails />
         <HowToHelp />
-        <Gallery />
+        {/* <Gallery /> */}
         <Organizers />
       </main>
       <Footer />

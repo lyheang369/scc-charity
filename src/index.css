@@ -2,6 +2,7 @@
 
 /* ── Brand Theme ── */
 @theme {
+  --breakpoint-xs: 400px;
   --color-navy: #2f3d48;
   --color-navy-light: #3d5060;
   --color-green: #02752e;
@@ -24,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {

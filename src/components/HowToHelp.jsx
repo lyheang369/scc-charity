@@ -4,7 +4,7 @@ import ScrollReveal from './ScrollReveal';
 
 const icons = [Heart, Handshake, Share2];
 const styles = [
-  { bg: 'bg-orange/10', icon: 'text-orange', cta: 'bg-gradient-to-r from-orange to-orange-dark text-white hover:shadow-orange/25' },
+  { bg: 'bg-orange/10', icon: 'text-orange', cta: 'bg-linear-to-r from-orange to-orange-dark text-white hover:shadow-orange/25' },
   { bg: 'bg-green/10', icon: 'text-green', cta: 'bg-green text-white hover:shadow-green/25' },
   { bg: 'bg-lime-soft', icon: 'text-lime', cta: 'bg-navy text-white hover:shadow-navy/25' },
 ];

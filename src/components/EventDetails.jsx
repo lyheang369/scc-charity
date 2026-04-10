@@ -33,7 +33,7 @@ export default function EventDetails() {
               <ScrollReveal key={i}>
                 <div className="bg-warm-gray rounded-lg p-6 md:p-8 hover:-translate-y-0.5 hover:shadow-md transition-all">
                   <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange to-orange-dark text-white font-display font-bold text-lg flex items-center justify-center shrink-0">{i + 1}</div>
+                    <div className="w-12 h-12 rounded-full bg-linear-to-br from-orange to-orange-dark text-white font-display font-bold text-lg flex items-center justify-center shrink-0">{i + 1}</div>
                     <div>
                       <h4 className="font-display font-semibold text-navy text-lg">
                         {day.title}<span className="text-muted font-normal ml-2">&mdash; {day.subtitle}</span>

@@ -15,7 +15,7 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {Array.from({ length: 8 }).map((_, i) => (
             <ScrollReveal key={i}>
-              <div className="aspect-[4/3] bg-sand rounded-lg flex items-center justify-center hover:bg-green/5 transition-colors">
+              <div className="aspect-4/3 bg-sand rounded-lg flex items-center justify-center hover:bg-green/5 transition-colors">
                 <span className="text-xs text-muted/50 font-medium tracking-wide">{t.gallery.placeholder}</span>
               </div>
             </ScrollReveal>

@@ -1,8 +1,38 @@
+import { BookOpen, Pencil, ShoppingBag, Package } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { useInView } from '../hooks/useInView';
+import { useCountUp } from '../hooks/useCountUp';
 import ScrollReveal from './ScrollReveal';
+
+// Icon mapped by supply index — order matches content.js supplies array
+const SUPPLY_ICONS = [BookOpen, Pencil, ShoppingBag, Package];
+
+// Parses "270+" → { value: 270, suffix: "+" }
+function parseStat(str) {
+  const match = str.match(/^(\d+)(.*)$/);
+  return match
+    ? { value: parseInt(match[1], 10), suffix: match[2] }
+    : { value: 0, suffix: str };
+}
+
+function StatCard({ stat, started }) {
+  const { value, suffix } = parseStat(stat.number);
+  const count = useCountUp(value, { started, duration: 1800 });
+
+  return (
+    <div className="bg-navy/80 p-8 md:p-10 text-center hover:bg-green/10 transition-colors">
+      <div className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-none mb-2 tabular-nums">
+        {count}<span>{suffix}</span>
+      </div>
+      <div className="text-xs tracking-[0.12em] uppercase text-white/40 font-medium mb-3">{stat.label}</div>
+      <p className="text-sm text-white/55 leading-relaxed max-w-xs mx-auto">{stat.desc}</p>
+    </div>
+  );
+}
 
 export default function Impact() {
   const t = useTranslation();
+  const { ref: statsRef, isInView } = useInView(0.25);
 
   return (
     <section id="impact" className="section-padding bg-navy relative overflow-hidden">
@@ -20,24 +50,35 @@ export default function Impact() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-px bg-lime/10 rounded-lg overflow-hidden mb-10">
+        {/* Stats grid — single ref triggers all counters together */}
+        <div
+          ref={statsRef}
+          className="grid md:grid-cols-3 gap-px bg-lime/10 rounded-lg overflow-hidden mb-10"
+        >
           {t.impact.stats.map((stat, i) => (
-            <ScrollReveal key={i}>
-              <div className="bg-navy/80 p-8 md:p-10 text-center hover:bg-green/10 transition-colors">
-                <div className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-none mb-2">{stat.number}</div>
-                <div className="text-xs tracking-[0.12em] uppercase text-white/40 font-medium mb-3">{stat.label}</div>
-                <p className="text-sm text-white/55 leading-relaxed max-w-xs mx-auto">{stat.desc}</p>
-              </div>
-            </ScrollReveal>
+            <StatCard key={i} stat={stat} started={isInView} />
           ))}
         </div>
 
-        <ScrollReveal className="flex justify-center gap-3 flex-wrap">
-          {t.impact.supplies.map((supply, i) => (
-            <span key={i} className="flex items-center gap-2 bg-lime-soft text-lime text-xs font-medium tracking-wide px-4 py-2 rounded-full border border-lime/20">
-              {supply}
-            </span>
-          ))}
+        <ScrollReveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {t.impact.supplies.map((supply, i) => {
+              const Icon = SUPPLY_ICONS[i] ?? Package;
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col items-center gap-4 bg-white/5 border border-lime/15 rounded-2xl p-6 hover:bg-lime/10 hover:border-lime/30 transition-all duration-300 group"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-lime-soft flex items-center justify-center text-lime group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={26} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-sm font-medium text-lime/80 text-center leading-snug tracking-wide">
+                    {supply}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </ScrollReveal>
       </div>
     </section>
