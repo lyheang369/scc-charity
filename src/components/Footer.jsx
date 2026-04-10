@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <img src="/logos/scc-primary-logo.png" alt="SCC" width="36" height="36" className="rounded-lg" />
+              <img src={`${import.meta.env.BASE_URL}logos/scc-primary-logo.png`} alt="SCC" width="36" height="36" className="rounded-lg" />
               <span className="font-display font-bold text-cream text-sm">Smile of Cambodian Children</span>
             </div>
             <p className="text-sm text-white/40 leading-relaxed">{t.footer.tagline}</p>

@@ -26,7 +26,7 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-18">
         <a href="#" className="flex items-center gap-2.5 shrink-0">
-          <img src="/logos/scc-primary-logo.png" alt="SCC Logo" width="40" height="40" className="rounded-lg" />
+          <img src={`${import.meta.env.BASE_URL}logos/scc-primary-logo.png`} alt="SCC Logo" width="40" height="40" className="rounded-lg" />
           <span className="font-display font-bold text-navy text-sm tracking-tight hidden sm:block">SCC</span>
         </a>
 

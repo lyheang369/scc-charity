@@ -14,7 +14,7 @@ export default function Organizers() {
           <div className="flex items-center justify-center">
             <div className="flex flex-col items-center gap-3 group">
               <img
-                src="/logos/CamEd_Logo.png"
+                src={`${import.meta.env.BASE_URL}logos/CamEd_Logo.png`}
                 alt="CamEd Business School"
                 width="96"
                 height="96"
