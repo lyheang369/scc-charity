@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* ── Brand Theme ── */
+@theme {
+  --color-navy: #2f3d48;
+  --color-navy-light: #3d5060;
+  --color-green: #02752e;
+  --color-green-light: #03913a;
+  --color-orange: #ff6602;
+  --color-orange-dark: #e55a00;
+  --color-lime: #7ee110;
+  --color-lime-soft: rgba(126, 225, 16, 0.15);
+
+  --color-cream: #fdf8f2;
+  --color-sand: #f5f0e8;
+  --color-warm-gray: #f7f5f2;
+  --color-text: #1a2028;
+  --color-muted: #6b7c8a;
+
+  --font-display: 'Plus Jakarta Sans', 'Noto Sans Khmer', sans-serif;
+  --font-body: 'Inter', 'Noto Sans Khmer', sans-serif;
+  --font-khmer: 'Noto Sans Khmer', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: rgba(47, 61, 72, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
