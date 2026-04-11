@@ -82,7 +82,7 @@ export default function Hero() {
               {t.hero.description}
             </p>
             <div className="flex flex-wrap items-center gap-4 animate-[fadeUp_0.8s_0.85s_ease_both]">
-              <a href="#help" className="inline-flex items-center gap-2 bg-linear-to-r from-orange to-orange-dark text-white text-sm font-semibold tracking-wide uppercase px-7 py-3.5 rounded-full hover:shadow-xl hover:shadow-orange/30 transition-all hover:-translate-y-0.5">
+              <a href="#donate" className="inline-flex items-center gap-2 bg-linear-to-r from-orange to-orange-dark text-white text-sm font-semibold tracking-wide uppercase px-7 py-3.5 rounded-full hover:shadow-xl hover:shadow-orange/30 transition-all hover:-translate-y-0.5">
                 {t.hero.cta} <ArrowRight size={16} />
               </a>
               <a href="#about" className="text-sm font-medium tracking-wide uppercase text-white/60 border-b border-white/20 pb-0.5 hover:text-lime hover:border-lime transition-colors">

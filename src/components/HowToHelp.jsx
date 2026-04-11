@@ -30,7 +30,11 @@ export default function HowToHelp() {
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-5 ${style.bg} ${style.icon}`}><Icon size={22} /></div>
                   <h3 className="font-display text-xl font-semibold text-navy mb-2">{card.title}</h3>
                   <p className="text-sm text-muted leading-relaxed mb-6 flex-1">{card.desc}</p>
-                  <a href="#" className={`inline-flex items-center justify-center text-xs font-semibold tracking-wide uppercase px-5 py-3 rounded-full hover:shadow-lg transition-all hover:-translate-y-0.5 ${style.cta}`}>
+                  <a
+                    href={i === 2 ? 'https://www.facebook.com/share/18Ws4jj6ht/?mibextid=wwXIfr' : '#donate'}
+                    {...(i === 2 ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className={`inline-flex items-center justify-center text-xs font-semibold tracking-wide uppercase px-5 py-3 rounded-full hover:shadow-lg transition-all hover:-translate-y-0.5 ${style.cta}`}
+                  >
                     {card.cta}
                   </a>
                 </div>

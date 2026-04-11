@@ -91,7 +91,7 @@ export default function Navbar() {
             <LanguageToggle dark={isDark} />
 
             <a
-              href="#help"
+              href="#donate"
               className="hidden md:inline-flex items-center bg-linear-to-r from-orange to-orange-dark text-white text-xs font-semibold tracking-wide uppercase px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-orange/25 transition-all hover:-translate-y-0.5"
             >
               {t.nav.donate}
@@ -151,7 +151,7 @@ export default function Navbar() {
           }}
         >
           <a
-            href="#help"
+            href="#donate"
             onClick={closeMenu}
             className="block text-center bg-linear-to-r from-orange to-orange-dark text-white text-sm font-semibold tracking-widest uppercase py-4 rounded-full shadow-lg shadow-orange/20 active:scale-95 transition-transform"
           >
