@@ -96,15 +96,15 @@ export default function Hero() {
             <div className="flex flex-row md:flex-col gap-5 md:gap-10 border-t md:border-t-0 md:border-l border-lime/30 pt-6 md:pt-0 md:pl-10">
               <div>
                 <div className="font-display text-4xl md:text-6xl font-bold text-cream leading-none">270<span className="text-orange">+</span></div>
-                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Children Supported</p>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">{t.hero.statLabels[0]}</p>
               </div>
               <div>
                 <div className="font-display text-4xl md:text-6xl font-bold text-cream leading-none">3</div>
-                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Day Campaign</p>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">{t.hero.statLabels[1]}</p>
               </div>
               <div>
                 <div className="font-display text-4xl md:text-6xl font-bold text-lime leading-none">1000<span className="text-orange">+</span></div>
-                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">Smiles Created</p>
+                <p className="text-[10px] md:text-xs tracking-[0.1em] uppercase text-white/40 mt-1">{t.hero.statLabels[2]}</p>
               </div>
             </div>
           </div>
