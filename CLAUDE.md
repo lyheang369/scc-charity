@@ -100,6 +100,15 @@ Brand colors and fonts are defined as `@theme` variables in **`src/index.css`** 
 - `.section-padding` — consistent vertical rhythm (5rem mobile, 7rem md+). All section components use this.
 - `.glass` / `.glass-dark` — frosted-glass treatments using `backdrop-filter: blur`
 
+### Known hardcoded strings
+
+A few UI strings are intentionally hardcoded and not in `content.js`:
+- `Navbar.jsx` — the two-line event name ("Smile of" / "Cambodian Children") and the mobile menu footer label
+- `Footer.jsx` — the brand name next to the logo
+- `LanguageToggle.jsx` — the "Language" dropdown header
+
+These are brand-identity strings that don't need translation. Do not move them to `content.js` unless specifically asked.
+
 ### Static assets
 
 Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
