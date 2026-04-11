@@ -27,7 +27,7 @@ There are no tests in this project.
 Navbar → Hero → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Organizers → Footer
 ```
 
-`Gallery` is currently commented out in `App.jsx` pending real images. Uncomment `{/* <Gallery /> */}` to restore it.
+`Gallery` is imported but its JSX usage is commented out in `App.jsx` (`{/* <Gallery /> */}`) pending real images. Uncomment that line to restore it.
 
 ### Bilingual system
 

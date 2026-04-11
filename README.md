@@ -1,6 +1,6 @@
 # 🌟 Smile of Cambodian Children
 
-> A charity campaign website by **Year 1 students of CamEd Business School (Group L)** — raising funds to bring essential educational materials to **270 underprivileged children** in Siem Reap Province, Cambodia.
+> A charity campaign website by **students of CamEd Business School ** — raising funds to bring essential educational materials to **270 underprivileged children** in Siem Reap Province, Cambodia.
 
 ---
 
@@ -102,18 +102,7 @@ The visual identity balances the **trust and authority** of a meaningful social 
 
 ---
 
-## 📬 Contact
-
-| Channel | Details |
-|---|---|
-| Telegram | [@thearysrms](https://t.me/thearysrms) |
-| Email | ssotheary26@cam-ed.com |
-
----
-
 <div align="center">
-
-Made with ❤️ by CamEd Business School · Group L
 
 *Every child deserves a chance to learn.*
 

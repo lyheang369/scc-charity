@@ -9,7 +9,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
+    onScroll(); // sync on mount
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -37,21 +38,25 @@ export default function Navbar() {
   return (
     <>
       {/* ── Top bar ── */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          menuOpen ? 'bg-navy' : scrolled ? 'glass shadow-sm' : 'bg-transparent'
-        }`}
-      >
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${menuOpen ? 'bg-navy' : ''}`}>
+        {/* Glass overlay — fades in/out via opacity so backdrop-filter doesn't flash */}
+        {!menuOpen && (
+          <div
+            className={`absolute inset-0 -z-10 glass shadow-sm transition-opacity duration-300 ${
+              scrolled ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        )}
         <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 gap-3">
 
           {/* ── Logo + event name ── */}
           <a href="#" onClick={closeMenu} className="flex items-center gap-2.5 shrink-0 min-w-0">
             <img
-              src={`${import.meta.env.BASE_URL}logos/scc-primary-logo.png`}
+              src={`${import.meta.env.BASE_URL}logos/${isDark ? 'scc-white.svg' : 'scc-black.svg'}`}
               alt="SCC Logo"
               width="36"
               height="36"
-              className="rounded-lg shrink-0"
+              className="rounded-lg shrink-0 transition-opacity duration-300"
             />
             {/* Vertical rule separator */}
             <span className={`hidden xs:block h-7 w-px transition-colors duration-300 ${isDark ? 'bg-white/20' : 'bg-navy/20'}`} />

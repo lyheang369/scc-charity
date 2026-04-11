@@ -5,7 +5,7 @@ export default function Organizers() {
   const t = useTranslation();
 
   return (
-    <section className="py-16 md:py-20 bg-sand text-center">
+    <section className="pt-4 pb-12 md:pb-16 bg-sand text-center">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <ScrollReveal>
           <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted mb-8">

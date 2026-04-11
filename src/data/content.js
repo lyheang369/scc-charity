@@ -21,12 +21,12 @@ const content = {
         "A charity campaign by CamEd Business School students \u2014 raising funds to bring essential educational materials to 270 underprivileged children in rural Cambodia.",
       cta: "Become a Sponsor",
       ctaSecondary: "Learn More",
-      trust: "Organized by CamEd Business School \u00b7 Group L",
+      trust: "Organized by CamEd Business School",
     },
     about: {
       eyebrow: "Our Campaign",
       headline: "Education is a right, not a privilege.",
-      p1: 'We are a group of Year 1 students from CamEd Business School (Group L), united by a shared belief that every child deserves access to learning. Our campaign, "The Smile of Cambodian Children," is more than a charity drive \u2014 it\u2019s a commitment to the futures of rural Cambodian youth.',
+      p1: 'We are a group of Year 1 students from CamEd Business School, united by a shared belief that every child deserves access to learning. Our campaign, "The Smile of Cambodian Children," is more than a charity drive \u2014 it\u2019s a commitment to the futures of rural Cambodian youth.',
       p2: "Over three days in Siem Reap Province, we will distribute essential school supplies to 270 students across multiple schools, removing the barriers that keep children away from classrooms.",
       tags: ["Siem Reap Province", "CamEd Business School", "270 Students"],
     },
@@ -63,7 +63,7 @@ const content = {
       headline: "Three Days of Hope",
       location: "Siem Reap Province, Cambodia",
       date: "Date to be announced",
-      organizer: "CamEd Business School \u00b7 Group L",
+      organizer: "CamEd Business School",
       days: [
         { title: "Day 1", subtitle: "Setup & Outreach", desc: "Community outreach, school coordination, and supply preparation." },
         { title: "Day 2", subtitle: "School Visits", desc: "Direct distribution of school supplies to students across multiple schools." },
@@ -78,6 +78,7 @@ const content = {
         { title: "Sponsor", desc: "Partner with us as a corporate or individual sponsor for the campaign.", cta: "Become a Sponsor" },
         { title: "Spread the Word", desc: "Share our mission on social media and help us reach more supporters.", cta: "Share Now" },
       ],
+      facebookPage: "Smile of Cambodian Children",
     },
     gallery: {
       eyebrow: "Gallery",
@@ -96,7 +97,7 @@ const content = {
       email: "Email",
       facebook: "Facebook",
       copyright: "\u00a9 2025 Smile of Cambodian Children. All rights reserved.",
-      camed: "CamEd Business School \u00b7 Group L \u00b7 Siem Reap, Cambodia",
+      camed: "CamEd Business School \u00b7 Siem Reap, Cambodia",
     },
   },
 
@@ -180,6 +181,7 @@ const content = {
         { title: "\u1785\u17c2\u1780\u179a\u17c6\u179b\u17c2\u1780", desc: "\u1785\u17c2\u1780\u179a\u17c6\u179b\u17c2\u1780\u1794\u17c1\u179f\u1780\u1798\u17d2\u1798\u179a\u1794\u179f\u17cb\u1799\u17be\u1784\u1793\u17c5\u179b\u17be\u1794\u178e\u17d2\u178f\u17b6\u1789\u179f\u1784\u17d2\u1782\u1798\u17d4", cta: "\u1785\u17c2\u1780\u179a\u17c6\u179b\u17c2\u1780\u17a5\u17a1\u17bc\u179c\u1793\u17c1\u17c7" },
       ],
     },
+      facebookPage: "ស្នាមញញឹមនៃកុមារកម្ពុជា",
     gallery: {
       eyebrow: "\u179c\u17b7\u1785\u17b7\u178f\u17d2\u179a\u179f\u17b6\u179b",
       headline: "\u1796\u17c1\u179b\u179c\u17c1\u179b\u17b6\u1793\u17c3\u179f\u17bb\u1797\u1798\u1784\u17d2\u1782\u179b",
