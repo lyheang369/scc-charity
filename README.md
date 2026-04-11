@@ -13,7 +13,7 @@
 | 📍 Location | Siem Reap Province, Cambodia |
 | 📅 Duration | 3-Day Campaign |
 | 🎒 Target | 270 Students |
-| 🏫 Organizer | CamEd Business School · Group L |
+| 🏫 Organizer | Studennt - CamEd Business School|
 
 ---
 

@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(bun --version)",
+      "Bash(ls:*)",
+      "Bash(file:*)",
+      "Bash(mkdir -p /tmp/scc-logos)",
+      "Bash(cp /Users/lyheang/SCC/src/*.png /tmp/scc-logos/)",
+      "Bash(npm create:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const l = require\\(''lucide-react''\\); console.log\\(Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''facebook''\\)\\).join\\('', ''\\)\\)\")",
+      "Bash(node --input-type=module -e \"import * as l from ''lucide-react''; console.log\\(Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''facebook''\\)\\).join\\('', ''\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(npx serve:*)",
+      "Bash(pkill -f \"serve\")",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(npx netlify-cli@latest deploy --prod --dir=dist --site-name=scc-charity)",
+      "Bash(git subtree:*)",
+      "Bash(node:*)",
+      "Bash(cat .github/workflows/*.yml)",
+      "Bash(gh run:*)",
+      "Bash(gh api:*)",
+      "Bash(gh workflow:*)",
+      "Bash(git restore:*)"
+    ]
+  }
+}
