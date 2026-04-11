@@ -3,20 +3,20 @@
 /* ── Brand Theme ── */
 @theme {
   --breakpoint-xs: 400px;
-  --color-navy: #2f3d48;
-  --color-navy-light: #3d5060;
-  --color-green: #02752e;
-  --color-green-light: #03913a;
-  --color-orange: #ff6602;
-  --color-orange-dark: #e55a00;
-  --color-lime: #7ee110;
-  --color-lime-soft: rgba(126, 225, 16, 0.15);
+  --color-navy: #0C4E8C;
+  --color-navy-light: #0d3f73;
+  --color-green: #11C4D4;
+  --color-green-light: #0db5c4;
+  --color-orange: #0C81E4;
+  --color-orange-dark: #0a6dc0;
+  --color-lime: #4FE7AF;
+  --color-lime-soft: rgba(79, 231, 175, 0.18);
 
-  --color-cream: #fdf8f2;
-  --color-sand: #f5f0e8;
-  --color-warm-gray: #f7f5f2;
-  --color-text: #1a2028;
-  --color-muted: #6b7c8a;
+  --color-cream: #f4fcff;
+  --color-sand: #e8f4ff;
+  --color-warm-gray: #f0f8ff;
+  --color-text: #1a2840;
+  --color-muted: #4a6a8a;
 
   --font-display: 'Plus Jakarta Sans', 'Noto Sans Khmer', sans-serif;
   --font-body: 'Inter', 'Noto Sans Khmer', sans-serif;
@@ -48,7 +48,7 @@ body {
 }
 
 .glass-dark {
-  background: rgba(47, 61, 72, 0.85);
+  background: rgba(12, 78, 140, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

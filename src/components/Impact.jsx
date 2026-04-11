@@ -37,8 +37,8 @@ export default function Impact() {
   return (
     <section id="impact" className="section-padding bg-navy relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_30%_60%,rgba(2,117,46,0.2),transparent_65%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(255,102,2,0.1),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_30%_60%,rgba(17,196,212,0.2),transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_80%_20%,rgba(12,129,228,0.12),transparent_55%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8">

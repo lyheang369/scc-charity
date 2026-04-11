@@ -57,9 +57,9 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-navy">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(2,117,46,0.2),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_20%_80%,rgba(255,102,2,0.12),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_10%,rgba(126,225,16,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(17,196,212,0.22),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_20%_80%,rgba(12,129,228,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_10%,rgba(79,231,175,0.12),transparent_50%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 w-full">

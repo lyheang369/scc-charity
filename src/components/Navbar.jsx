@@ -52,7 +52,7 @@ export default function Navbar() {
           {/* ── Logo + event name ── */}
           <a href="#" onClick={closeMenu} className="flex items-center gap-2.5 shrink-0 min-w-0">
             <img
-              src={`${import.meta.env.BASE_URL}logos/${isDark ? 'scc-white.svg' : 'scc-black.svg'}`}
+              src={`${import.meta.env.BASE_URL}logos/${isDark ? 'scc-white.svg' : 'scc.svg'}`}
               alt="SCC Logo"
               width="36"
               height="36"
