@@ -58,9 +58,10 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 `Navbar.jsx` derives `isDark = menuOpen || !scrolled` and passes it as `<LanguageToggle dark={isDark} />`.
 
 **`Navbar`** — fixed top bar with:
-- Logo + two-line event name ("Smile of" / "Cambodian Children") that adapts color via `isDark`
-- Full-screen mobile overlay menu (opacity transition, staggered link slide-up, body scroll locked while open)
-- Animated 3-bar → × hamburger using `bg-white`/`bg-navy` bar color toggled by `isDark`
+- Logo switches between `scc-white.svg` (dark/hero state) and `scc.svg` (scrolled light state) via `isDark`
+- Glass overlay is a separate child `div` that fades via `opacity` (not `transition-all`) to avoid backdrop-filter flash on scroll-to-top
+- `onScroll()` is called immediately on mount to sync state with actual scroll position
+- Full-screen mobile overlay menu with body scroll lock while open
 
 **`Impact`** — stat cards use `useCountUp` triggered by `useInView(0.25)` (once only). Supply items render as icon cards in a 2×2 / 4-col grid using `lucide-react` icons mapped by index.
 
@@ -68,18 +69,24 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 
 Brand colors and fonts are defined as `@theme` variables in **`src/index.css`** (no `tailwind.config.js`). Use them in components as Tailwind utilities:
 
-| Variable | Utility |
-|---|---|
-| `--color-navy` / `--color-navy-light` | `bg-navy`, `text-navy`, `bg-navy-light` |
-| `--color-green` / `--color-green-light` | `bg-green`, `text-green` |
-| `--color-orange` / `--color-orange-dark` | `bg-orange`, `text-orange` |
-| `--color-lime` / `--color-lime-soft` | `bg-lime`, `text-lime`, `bg-lime-soft` |
-| `--color-cream` / `--color-sand` / `--color-warm-gray` | `bg-cream`, `bg-sand`, `bg-warm-gray` |
-| `--color-text` / `--color-muted` | `text-text`, `text-muted` |
-| `--font-display` | `font-display` (Plus Jakarta Sans) |
-| `--font-body` | `font-body` (Inter) |
-| `--font-khmer` | `font-khmer` (Noto Sans Khmer) |
-| `--breakpoint-xs: 400px` | `xs:` responsive prefix |
+| Variable | Value | Utility |
+|---|---|---|
+| `--color-navy` | `#0C4E8C` | `bg-navy`, `text-navy` |
+| `--color-navy-light` | `#0d3f73` | `bg-navy-light` |
+| `--color-green` | `#11C4D4` | `bg-green`, `text-green` (cyan — secondary CTA) |
+| `--color-orange` | `#0C81E4` | `bg-orange`, `text-orange` (bright blue — primary CTA) |
+| `--color-orange-dark` | `#0a6dc0` | `bg-orange-dark` (hover state) |
+| `--color-lime` | `#4FE7AF` | `bg-lime`, `text-lime` (mint accent) |
+| `--color-lime-soft` | mint 18% opacity | `bg-lime-soft` |
+| `--color-cream` / `--color-sand` / `--color-warm-gray` | icy whites | `bg-cream`, `bg-sand`, `bg-warm-gray` |
+| `--color-text` | `#1a2840` | `text-text` |
+| `--color-muted` | `#4a6a8a` | `text-muted` |
+| `--font-display` | Plus Jakarta Sans | `font-display` |
+| `--font-body` | Inter | `font-body` |
+| `--font-khmer` | Noto Sans Khmer | `font-khmer` |
+| `--breakpoint-xs: 400px` | — | `xs:` responsive prefix |
+
+> **Note:** Despite the variable name, `orange` is now bright blue (`#0C81E4`) and `green` is cyan (`#11C4D4`) following the palette update. The names are kept for backward compatibility with component classes.
 
 `src/index.css` also defines:
 - `.section-padding` — consistent vertical rhythm (5rem mobile, 7rem md+). All section components use this.
@@ -87,12 +94,14 @@ Brand colors and fonts are defined as `@theme` variables in **`src/index.css`** 
 
 ### Static assets
 
-Logos and images live in **`public/logos/`** and are referenced via `${import.meta.env.BASE_URL}logos/filename.png`. Never import images from `src/` for `<img>` src — always use `public/`.
+Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
+
+The favicon and OG image in `index.html` point to `scc.svg`.
 
 ### Design system
 
 The site follows the **Radiant Guardian** design system defined in `.claude/skills/SKILL.md`:
 - No hard borders — use tonal background shifts for separation
-- Orange (`#ff6602`) is the primary CTA color only — avoid for small text (contrast)
+- Blue (`#0C81E4`, utility `bg-orange`) is the primary CTA color only
 - Asymmetric layouts in at least one section per page
 - All section components use `.section-padding` for consistent vertical rhythm
