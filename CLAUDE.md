@@ -19,7 +19,13 @@ There are no tests in this project.
 
 **Output:** `npm run build` produces a fully static `/dist` folder deployed to GitHub Pages under the `/scc-charity/` base path (set in `vite.config.js`). All internal asset paths must respect this base — use `import.meta.env.BASE_URL` for dynamic references.
 
-### Page structure
+### Routing
+
+`App.jsx` uses a minimal hash router — no external library. A `usePage()` hook listens to `hashchange` and returns `window.location.hash`. When the hash is `#donate`, `<DonatePage>` is rendered instead of the main page. All other hashes render the normal single-page layout.
+
+To add a new page: add a new hash condition in `App.jsx` and create the component in `src/pages/`.
+
+### Main page structure
 
 `main.jsx` wraps `<App>` in `<LanguageProvider>`. `App.jsx` renders sections in this order:
 
@@ -36,6 +42,8 @@ All on-page text lives in **`src/data/content.js`** — a single default export 
 Every component calls `const t = useTranslation()` and reads text as `t.section.key`.
 
 **To add or change any on-page text, edit `content.js` only — always update both `en` and `km` sections with matching keys.**
+
+**`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
 
 The `hero` section uses `rotatingPhrases` (an array) instead of a single string — this powers the `RotatingPhrase` component inside `Hero.jsx` that crossfades between phrases every 4 seconds. Both `en` and `km` must have the same key with matching-length arrays.
 
