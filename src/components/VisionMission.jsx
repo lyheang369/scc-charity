@@ -14,9 +14,9 @@ export default function VisionMission() {
     <section id="mission" className="section-padding bg-sand">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <ScrollReveal className="text-center mb-12 md:mb-16">
-          <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">What Drives Us</span>
+          <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">{t.vision.eyebrow}</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-navy">
-            Our <strong className="font-semibold">Vision</strong> & Mission
+            {t.vision.sectionTitle[0]}<strong className="font-semibold">{t.vision.sectionTitle[1]}</strong>{t.vision.sectionTitle[2]}
           </h2>
         </ScrollReveal>
 

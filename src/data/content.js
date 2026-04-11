@@ -32,6 +32,8 @@ const content = {
       tags: ["Siem Reap Province", "CamEd Business School", "270 Students"],
     },
     vision: {
+      eyebrow: "What Drives Us",
+      sectionTitle: ["Our ", "Vision", " & Mission"],
       title: "Vision",
       text: "To build a caring community where people from all backgrounds come together to support and uplift children in need \u2014 giving every child a brighter start in life.",
       points: [
@@ -146,6 +148,8 @@ const content = {
       tags: ["\u1781\u17c1\u178f\u17d2\u178f\u179f\u17c0\u1798\u179a\u17b6\u1794", "\u179f\u17b6\u1780\u179b\u179c\u17b7\u1791\u17d2\u1799\u17b6\u179b\u17d0\u1799 CamEd", "\u179f\u17b7\u179f\u17d2\u179f \u17e2\u17e7\u17e0 \u1793\u17b6\u1780\u17cb"],
     },
     vision: {
+      eyebrow: "អ្វីដែលជំរុញយើង",
+      sectionTitle: ["ចក្ខុវិស័យ និង", "បេសកម្ម", "របស់យើង"],
       title: "\u1785\u1780\u17d2\u1781\u17bb\u179c\u17b7\u179f\u17d0\u1799",
       text: "\u1780\u179f\u17b6\u1784\u179f\u17a0\u1782\u1798\u1793\u17cd\u178a\u17c2\u179b\u1798\u17b6\u1793\u1780\u17b6\u179a\u1799\u1780\u1785\u17b7\u178f\u17d2\u178f\u1791\u17bb\u1780\u178a\u17b6\u1780\u17cb \u178a\u17c2\u179b\u1798\u1793\u17bb\u179f\u17d2\u179f\u1796\u17b8\u1782\u17d2\u179a\u1794\u17cb\u1798\u1787\u17d2\u1788\u178a\u17d2\u178b\u17b6\u1793\u179a\u17bd\u1798\u1782\u17d2\u1793\u17b6\u1782\u17b6\u17c6\u1791\u17d2\u179a \u1793\u17b7\u1784\u179b\u17be\u1780\u179f\u17d2\u1791\u17bd\u1799\u1780\u17bb\u1798\u17b6\u179a\u178a\u17c2\u179b\u178f\u17d2\u179a\u17bc\u179c\u1780\u17b6\u179a\u1787\u17c6\u1793\u17bd\u1799\u17d4",
       points: [
