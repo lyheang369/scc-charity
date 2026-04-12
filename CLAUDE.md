@@ -86,6 +86,7 @@ Brand colors and fonts are defined as `@theme` variables in **`src/index.css`** 
 | `--color-orange-dark` | `#0a6dc0` | `bg-orange-dark` (hover state) |
 | `--color-lime` | `#4FE7AF` | `bg-lime`, `text-lime` (mint accent) |
 | `--color-lime-soft` | mint 18% opacity | `bg-lime-soft` |
+| `--color-green-light` | `#0db5c4` | `bg-green-light`, `text-green-light` |
 | `--color-cream` / `--color-sand` / `--color-warm-gray` | icy whites | `bg-cream`, `bg-sand`, `bg-warm-gray` |
 | `--color-text` | `#1a2840` | `text-text` |
 | `--color-muted` | `#4a6a8a` | `text-muted` |
@@ -112,6 +113,8 @@ These are brand-identity strings that don't need translation. Do not move them t
 ### Static assets
 
 Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
+
+`public/img/` contains group/event photos (e.g. `All_group_Members_image.JPEG`). No component currently references these — they are available for future use in the Gallery section.
 
 The favicon and OG image in `index.html` point to `scc.svg`.
 
