@@ -18,7 +18,7 @@ export default function Team() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="rounded-2xl overflow-hidden shadow-xl shadow-navy/10 border border-navy/6">
+          <div className="rounded-2xl overflow-hidden shadow-xl shadow-navy/10 border border-navy/6 max-w-3xl mx-auto">
             <img
               src={`${import.meta.env.BASE_URL}img/All_group_Members_image.JPEG`}
               alt={tm.photoCaption}
