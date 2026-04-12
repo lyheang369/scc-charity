@@ -26,6 +26,7 @@ export default function Navbar() {
     { href: '#impact', label: t.nav.impact },
     { href: '#event', label: t.nav.event },
     { href: '#help', label: t.nav.help },
+    { href: '#team', label: t.nav.team },
   ];
 
   const closeMenu = () => setMenuOpen(false);

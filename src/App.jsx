@@ -10,6 +10,7 @@ import Gallery from './components/Gallery';
 import Organizers from './components/Organizers';
 import Footer from './components/Footer';
 import DonatePage from './pages/DonatePage';
+import TeamPage from './pages/TeamPage';
 
 function usePage() {
   const [page, setPage] = useState(() => window.location.hash);
@@ -26,9 +27,8 @@ function usePage() {
 export default function App() {
   const page = usePage();
 
-  if (page === '#donate') {
-    return <DonatePage />;
-  }
+  if (page === '#donate') return <DonatePage />;
+  if (page === '#team') return <TeamPage />;
 
   return (
     <>
