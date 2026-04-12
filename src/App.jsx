@@ -8,6 +8,7 @@ import EventDetails from './components/EventDetails';
 import HowToHelp from './components/HowToHelp';
 import Gallery from './components/Gallery';
 import Organizers from './components/Organizers';
+import Team from './components/Team';
 import Footer from './components/Footer';
 import DonatePage from './pages/DonatePage';
 import TeamPage from './pages/TeamPage';
@@ -41,6 +42,7 @@ export default function App() {
         <EventDetails />
         <HowToHelp />
         {/* <Gallery /> */}
+        <Team />
         <Organizers />
       </main>
       <Footer />
