@@ -30,7 +30,7 @@ To add a new page: add a new hash condition in `App.jsx` and create the componen
 `main.jsx` wraps `<App>` in `<LanguageProvider>`. `App.jsx` renders sections in this order:
 
 ```
-Navbar → Hero → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Organizers → Footer
+Navbar → Hero → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Team → Organizers → Footer
 ```
 
 `Gallery` is imported but its JSX usage is commented out in `App.jsx` (`{/* <Gallery /> */}`) pending real images. Uncomment that line to restore it.
