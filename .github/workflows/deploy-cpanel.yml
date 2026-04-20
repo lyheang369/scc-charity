@@ -31,6 +31,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /home/zera3/scc-charity.org/
+          server-dir: /home/zera3/scc-charity.com/
           protocol: ftp
           port: 21
