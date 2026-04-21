@@ -5,13 +5,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
+npm install       # Install dependencies (required before first run)
 npm run dev       # Start dev server at http://localhost:5173
 npm run build     # Build static output to /dist
 npm run preview   # Preview the production build locally
 npx serve dist -l 3000  # Serve the built /dist folder for testing
 ```
 
-There are no tests in this project.
+There are no tests or linting configured in this project.
 
 ## Architecture
 
@@ -125,3 +126,5 @@ The site follows the **Radiant Guardian** design system defined in `.claude/skil
 - Blue (`#0C81E4`, utility `bg-orange`) is the primary CTA color only
 - Asymmetric layouts in at least one section per page
 - All section components use `.section-padding` for consistent vertical rhythm
+
+> **Note:** The color values in `SKILL.md` (the original design brief) differ from the actual implemented palette in `src/index.css`. The values documented in this file and in `src/index.css` are the source of truth for the current site.

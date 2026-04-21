@@ -56,7 +56,7 @@ export default function HowToHelp() {
                 <div className="text-sm font-medium">@thearysrms</div>
               </div>
             </a>
-            <a href="mailto:ssotheary26@cam-ed.com" className="flex items-center gap-4 text-cream hover:text-lime transition-colors">
+            <a href="mailto:support@scc-charity.com" className="flex items-center gap-4 text-cream hover:text-lime transition-colors">
               <div className="w-10 h-10 rounded-full bg-lime-soft flex items-center justify-center shrink-0">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                   <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
@@ -64,7 +64,7 @@ export default function HowToHelp() {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-wider text-white/35">Email</div>
-                <div className="text-sm font-medium">ssotheary26@cam-ed.com</div>
+                <div className="text-sm font-medium">support@scc-charity.com</div>
               </div>
             </a>
             <a href="https://www.facebook.com/share/18Ws4jj6ht/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-cream hover:text-lime transition-colors">

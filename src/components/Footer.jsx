@@ -44,8 +44,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:ssotheary26@cam-ed.com" className="flex items-center gap-3 text-sm text-white/55 hover:text-lime transition-colors">
-                  <Mail size={14} /> ssotheary26@cam-ed.com
+                <a href="mailto:support@scc-charity.com" className="flex items-center gap-3 text-sm text-white/55 hover:text-lime transition-colors">
+                  <Mail size={14} /> support@scc-charity.com
                 </a>
               </li>
               <li>

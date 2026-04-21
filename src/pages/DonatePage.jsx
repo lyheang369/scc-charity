@@ -102,7 +102,7 @@ export default function DonatePage() {
 
           {/* Email */}
           <a
-            href="mailto:ssotheary26@cam-ed.com"
+            href="mailto:support@scc-charity.com"
             className="group flex flex-col items-center text-center gap-5 p-10 rounded-2xl border bg-orange/8 border-orange/20 text-orange hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
           >
             <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-orange/15 group-hover:scale-110 transition-transform duration-300">
