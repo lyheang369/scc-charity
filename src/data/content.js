@@ -10,7 +10,7 @@ const content = {
       team: "Our Team",
     },
     hero: {
-      eyebrow: "Siem Reap, Cambodia \u00b7 3-Day Campaign",
+      eyebrow: "Smile of Cambodian Children \u00b7 Saturday 23 May 2026",
       rotatingPhrases: [
         "Every child deserves a chance to learn.",
         "Together, we build brighter futures.",
@@ -22,14 +22,14 @@ const content = {
         "A charity campaign by CamEd Business School students \u2014 raising funds to bring essential educational materials to 270 underprivileged children in rural Cambodia.",
       cta: "Become a Sponsor",
       ctaSecondary: "Learn More",
-      trust: "Organized by CamEd Business School",
+      trust: "Organized by SCC · Supported by CamEd Business School",
       statLabels: ["Children Supported", "Day Campaign", "Smiles Created"],
     },
     about: {
       eyebrow: "Our Campaign",
       headline: "Education is a right, not a privilege.",
       p1: 'We are a group of Year 1 students from CamEd Business School, united by a shared belief that every child deserves access to learning. Our campaign, "The Smile of Cambodian Children," is more than a charity drive \u2014 it\u2019s a commitment to the futures of rural Cambodian youth.',
-      p2: "Over three days in Siem Reap Province, we will distribute essential school supplies to 270 students across multiple schools, removing the barriers that keep children away from classrooms.",
+      p2: "The main outreach activity is scheduled for Saturday 23 May 2026 at Daun Chrom Primary School, Svay Chek Village, Keo Pur Commune, Puok District, Siem Reap Province, where we will deliver essential school supplies and encouragement to children in need.",
       tags: ["Siem Reap Province", "CamEd Business School", "270 Students"],
     },
     vision: {
@@ -65,9 +65,9 @@ const content = {
     event: {
       eyebrow: "The Event",
       headline: "Three Days of Hope",
-      location: "Siem Reap Province, Cambodia",
-      date: "Date to be announced",
-      organizer: "CamEd Business School",
+      location: "Daun Chrom Primary School, Svay Chek Village, Keo Pur Commune, Puok District, Siem Reap Province",
+      date: "Saturday 23 May 2026",
+      organizer: "Smile of Cambodian Children (SCC) · Supported by CamEd Business School",
       days: [
         { title: "Day 1", subtitle: "Setup & Outreach", desc: "Community outreach, school coordination, and supply preparation." },
         { title: "Day 2", subtitle: "School Visits", desc: "Direct distribution of school supplies to students across multiple schools." },

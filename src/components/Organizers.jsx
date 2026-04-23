@@ -11,7 +11,17 @@ export default function Organizers() {
           <p className="text-xs font-medium tracking-[0.15em] uppercase text-muted mb-8">
             {t.organizers.label}
           </p>
-          <div className="flex items-center justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-10">
+            <div className="flex flex-col items-center gap-3 group">
+              <img
+                src={`${import.meta.env.BASE_URL}logos/scc.svg`}
+                alt="Smile of Cambodian Children"
+                width="96"
+                height="96"
+                className="rounded-xl drop-shadow-md group-hover:scale-105 transition-transform bg-white p-3"
+              />
+              <span className="text-sm font-medium text-navy">Smile of Cambodian Children (SCC)</span>
+            </div>
             <div className="flex flex-col items-center gap-3 group">
               <img
                 src={`${import.meta.env.BASE_URL}logos/CamEd_Logo.png`}

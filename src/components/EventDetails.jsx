@@ -44,6 +44,22 @@ export default function EventDetails() {
                 </div>
               </ScrollReveal>
             ))}
+
+            <ScrollReveal>
+              <div className="overflow-hidden rounded-lg bg-navy shadow-lg">
+                <img
+                  src={`${import.meta.env.BASE_URL}img/event-poster.jpg`}
+                  alt="Smile of Cambodian Children event poster"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-5 md:p-6 text-cream">
+                  <p className="text-xs uppercase tracking-[0.18em] text-lime mb-2">Featured Poster</p>
+                  <p className="text-sm text-white/75 leading-relaxed">
+                    Official campaign poster highlighting the event, location, partners, and donation drive.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>
