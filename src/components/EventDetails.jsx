@@ -14,16 +14,16 @@ export default function EventDetails() {
   return (
     <section id="event" className="section-padding bg-cream">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
           <ScrollReveal>
             <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">{t.event.eyebrow}</span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-8">{t.event.headline}</h2>
-            <div className="space-y-5">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-6 md:mb-8">{t.event.headline}</h2>
+            <div className="space-y-7 md:space-y-5">
               {info.map(({ icon: Icon, label, isList }, i) => (
-                <div key={i} className="flex items-start gap-4">
+                <div key={i} className="flex items-start gap-3 md:gap-4">
                   <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center text-green shrink-0 mt-0.5"><Icon size={18} /></div>
                   {isList ? (
-                    <ul className="text-sm md:text-base text-navy-light space-y-1 list-disc pl-4">
+                    <ul className="text-sm md:text-base text-navy-light space-y-1.5 list-disc pl-5 pt-0.5">
                       {label.map((item, idx) => (
                         <li key={idx}>{item}</li>
                       ))}
@@ -36,7 +36,7 @@ export default function EventDetails() {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-4">
+          <div className="space-y-5 md:space-y-4">
             {t.event.days.map((day, i) => (
               <ScrollReveal key={i}>
                 <div className="bg-warm-gray rounded-lg p-6 md:p-8 hover:-translate-y-0.5 hover:shadow-md transition-all">
