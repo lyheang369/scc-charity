@@ -6,9 +6,9 @@ export default function EventDetails() {
   const t = useTranslation();
 
   const info = [
-    { icon: MapPin, label: t.event.location },
-    { icon: Calendar, label: t.event.date },
-    { icon: Users, label: t.event.organizer },
+    { icon: MapPin, label: t.event.location, isList: Array.isArray(t.event.location) },
+    { icon: Calendar, label: t.event.date, isList: false },
+    { icon: Users, label: t.event.organizer, isList: Array.isArray(t.event.organizer) },
   ];
 
   return (
@@ -19,10 +19,18 @@ export default function EventDetails() {
             <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">{t.event.eyebrow}</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-8">{t.event.headline}</h2>
             <div className="space-y-5">
-              {info.map(({ icon: Icon, label }, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center text-green shrink-0"><Icon size={18} /></div>
-                  <span className="text-sm md:text-base text-navy-light">{label}</span>
+              {info.map(({ icon: Icon, label, isList }, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center text-green shrink-0 mt-0.5"><Icon size={18} /></div>
+                  {isList ? (
+                    <ul className="text-sm md:text-base text-navy-light space-y-1 list-disc pl-4">
+                      {label.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <span className="text-sm md:text-base text-navy-light">{label}</span>
+                  )}
                 </div>
               ))}
             </div>
