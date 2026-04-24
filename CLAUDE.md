@@ -44,6 +44,10 @@ Every component calls `const t = useTranslation()` and reads text as `t.section.
 
 **To add or change any on-page text, edit `content.js` only — always update both `en` and `km` sections with matching keys.**
 
+Notable non-obvious keys:
+- `event.poster` — object with bilingual text for the styled poster card in `EventDetails` (titles, location, date, organizer labels)
+- `donate.khqr` — object for the KHQR donation QR section on the donate page
+
 **`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
 
 The `hero` section uses `rotatingPhrases` (an array) instead of a single string — this powers the `RotatingPhrase` component inside `Hero.jsx` that crossfades between phrases every 4 seconds. Both `en` and `km` must have the same key with matching-length arrays.
@@ -115,16 +119,14 @@ These are brand-identity strings that don't need translation. Do not move them t
 
 Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
 
-`public/img/` contains group/event photos (e.g. `All_group_Members_image.JPEG`). No component currently references these — they are available for future use in the Gallery section.
+`public/img/` contains group/event photos (`All_group_Members_image.JPEG`, `event-poster.jpg`). `event-poster.jpg` is referenced in `EventDetails.jsx` as a fallback but the primary poster display is now a styled text card driven by `t.event.poster` keys in `content.js`.
 
 The favicon and OG image in `index.html` point to `scc.svg`.
 
 ### Design system
 
-The site follows the **Radiant Guardian** design system defined in `.claude/skills/SKILL.md`:
+The site follows the **Radiant Guardian** design system:
 - No hard borders — use tonal background shifts for separation
 - Blue (`#0C81E4`, utility `bg-orange`) is the primary CTA color only
 - Asymmetric layouts in at least one section per page
 - All section components use `.section-padding` for consistent vertical rhythm
-
-> **Note:** The color values in `SKILL.md` (the original design brief) differ from the actual implemented palette in `src/index.css`. The values documented in this file and in `src/index.css` are the source of truth for the current site.
