@@ -6,3 +6,4 @@ dist
 .claude/
 payment-data.txt
 public/data/donations-state.json
+.telegram-user-session

@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import { buildDonationPayload, parseDonationMessages } from './donationParser.mjs'
+import { buildDonationPayload, mergeDonations, parseDonationMessages } from './donationParser.mjs'
 
 const root = resolve(import.meta.dirname, '..')
 const sourcePath = resolve(root, process.argv[2] || 'payment-data.txt')
@@ -18,9 +18,10 @@ if (!existsSync(sourcePath)) {
 }
 
 const paymentText = readFileSync(sourcePath, 'utf8')
-const donations = parseDonationMessages(paymentText, { defaultYear: 2026 })
-const payload = buildDonationPayload(donations, 'payment-data.txt')
 const currentPayload = existsSync(outputPath) ? JSON.parse(readFileSync(outputPath, 'utf8')) : null
+const sourceDonations = parseDonationMessages(paymentText, { defaultYear: 2026 })
+const donations = mergeDonations(currentPayload?.donations || [], sourceDonations)
+const payload = buildDonationPayload(donations, currentPayload?.source || 'payment-data.txt')
 
 if (currentPayload?.donations && JSON.stringify(currentPayload.donations) === JSON.stringify(payload.donations)) {
   payload.generatedAt = currentPayload.generatedAt || payload.generatedAt
