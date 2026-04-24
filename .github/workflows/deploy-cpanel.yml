@@ -24,6 +24,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Generate Telegram donation API
+        env:
+          TG_API_BOT: ${{ secrets.TG_API_BOT }}
+          TG_CHAT_ID: "-1003796814691"
+          TG_WEBHOOK_SECRET: ${{ secrets.TG_WEBHOOK_SECRET }}
+        run: npm run donations:api
+
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -34,3 +41,10 @@ jobs:
           server-dir: /scc-charity.com/
           protocol: ftp
           port: 21
+
+      - name: Configure Telegram donation webhook
+        env:
+          TG_API_BOT: ${{ secrets.TG_API_BOT }}
+          TG_WEBHOOK_SECRET: ${{ secrets.TG_WEBHOOK_SECRET }}
+          TG_WEBHOOK_URL: https://scc-charity.com/api/donations.php
+        run: npm run donations:webhook
