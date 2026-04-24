@@ -13,12 +13,15 @@
     "donations:watch": "node scripts/sync-telegram-donations.mjs --watch",
     "donations:api": "node scripts/write-telegram-api.mjs",
     "donations:webhook": "node scripts/set-telegram-webhook.mjs",
-    "donations:import-live": "node scripts/import-live-donations.mjs"
+    "donations:import-live": "node scripts/import-live-donations.mjs",
+    "telegram:login": "node scripts/login-telegram-user.mjs",
+    "telegram:sync": "node scripts/sync-telegram-user-donations.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "telegram": "^2.26.22"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
