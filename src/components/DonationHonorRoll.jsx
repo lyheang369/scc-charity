@@ -34,18 +34,13 @@ export function RecentDonationList({ donations, labels, language, limit = 5 }) {
     <div className="space-y-3">
       {visibleDonations.map((donation) => (
         <div key={donation.id} className="rounded-lg border border-navy/8 bg-white px-4 py-4">
-          <div className="flex flex-col gap-2">
-            <div className="min-w-0">
+          <div className="min-w-0">
+            <div>
               <p className="text-sm md:text-base text-text leading-relaxed">
-                <span className="font-semibold text-navy break-words">{donation.displayName}</span>{' '}
-                <span>{labels.donated}</span>{' '}
-                <span className="font-semibold text-orange">{formatDonationAmount(donation.amount)}</span>{' '}
-                <span className="text-muted">{formatRelativeTime(donation.paidAt, language)}</span>
+                <span className="font-semibold text-navy break-words">{donation.displayName}</span> <span>{labels.donated}</span>
               </p>
-              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-muted">
-                <span className="rounded-full bg-sand px-2.5 py-1">{donation.method}</span>
-                {donation.bank && <span className="rounded-full bg-lime-soft px-2.5 py-1">{donation.bank}</span>}
-              </div>
+              <p className="font-semibold text-2xl text-orange mt-1 mb-0.5">{formatDonationAmount(donation.amount)}</p>
+              <p className="text-xs text-muted mt-0.5">{formatRelativeTime(donation.paidAt, language)}</p>
             </div>
           </div>
         </div>

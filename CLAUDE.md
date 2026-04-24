@@ -20,9 +20,20 @@ There are no tests or linting configured in this project.
 
 **Output:** `npm run build` produces a fully static `/dist` folder deployed to GitHub Pages under the `/scc-charity/` base path (set in `vite.config.js`). All internal asset paths must respect this base — use `import.meta.env.BASE_URL` for dynamic references.
 
+### Environment & Secrets
+
+- **`.env`** contains the Telegram Bot API token (`TG_API_BOT`) — do not commit this file
+- **GitHub Secrets** (`TG_API_BOT`) mirrors the local `.env` for CI/CD workflows
+- **`payment-data.txt`** stores historical payment notifications (sample data from Apr 23-24)
+- **Telegram Group ID**: `-100379681491` — payment notifications are sent here by PayWay/ABA
+
 ### Routing
 
-`App.jsx` uses a minimal hash router — no external library. A `usePage()` hook listens to `hashchange` and returns `window.location.hash`. When the hash is `#donate`, `<DonatePage>` is rendered instead of the main page. All other hashes render the normal single-page layout.
+`App.jsx` uses a minimal hash router — no external library. A `usePage()` hook listens to `hashchange` and returns `window.location.hash`. Routes:
+
+- `#donate` → `<DonatePage>` (single donation page)
+- `#donors` → `<DonorsPage>` (leaderboard of all donors)
+- Any other hash (including empty) → main single-page layout
 
 To add a new page: add a new hash condition in `App.jsx` and create the component in `src/pages/`.
 
@@ -48,7 +59,7 @@ Notable non-obvious keys:
 - `event.poster` — object with bilingual text for the styled poster card in `EventDetails` (titles, location, date, organizer labels)
 - `donate.khqr` — object for the KHQR donation QR section on the donate page
 
-**`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
+**`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
 
 The `hero` section uses `rotatingPhrases` (an array) instead of a single string — this powers the `RotatingPhrase` component inside `Hero.jsx` that crossfades between phrases every 4 seconds. Both `en` and `km` must have the same key with matching-length arrays.
 
@@ -59,6 +70,23 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 | `useTranslation()` | `src/hooks/useTranslation.js` | Returns `content[language]` from context |
 | `useInView(threshold, { once })` | `src/hooks/useInView.js` | `IntersectionObserver` wrapper. `once: true` (default) fires once and disconnects — used by `ScrollReveal`. `once: false` re-fires on every enter/exit — used for repeating animations. |
 | `useCountUp(target, { duration, started })` | `src/hooks/useCountUp.js` | Animates a number from 0 to `target` using ease-out cubic when `started` flips to `true`. Resets to 0 when `started` becomes `false`. |
+| `useDonationHistory()` | `src/hooks/useDonationHistory.js` | Loads historical payment data from `payment-data.txt` and parses it into structured donor records |
+| `useTelegramPoller()` | `src/hooks/useTelegramPoller.js` | Polls Telegram Bot API every 5-10 seconds for new donation notifications in the group chat |
+
+### Donation System
+
+**Real-time Donation Feed:**
+- `DonorsPage.jsx` — dedicated leaderboard page showing all donors
+- `LiveDonationsFeed.jsx` — compact feed component embedded in homepage
+- `DonorCard.jsx` — formal display: "Name Donated $X.XX Y minutes ago"
+- Payment notifications from Telegram group are parsed and displayed
+- Name disambiguation: if names match, suffix with last 3 digits of bank account (e.g., "LENG Lyheang (*267)")
+
+**Payment Parsing:**
+- ABA PayWay notifications parsed from Telegram messages
+- Regex extracts: `NAME (*XXX)`, `$AMOUNT`, `Trx.ID`, time
+- Historical data stored in `payment-data.txt` (load on page load)
+- New donations detected via Telegram group message polling
 
 ### Components
 
