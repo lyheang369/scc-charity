@@ -1,4 +1,6 @@
-export const DONATION_POLL_MS = 6000
+import initialDonationPayload from '../data/donations.generated.json'
+
+export const DONATION_POLL_MS = 2000
 
 const emptyPayload = {
   schemaVersion: 1,
@@ -62,10 +64,13 @@ export function normalizeDonationPayload(payload) {
   return {
     ...emptyPayload,
     ...payload,
+    live: payload.live ?? String(payload.source || '').startsWith('telegram'),
     donations,
     summary: summarize(donations),
   }
 }
+
+export const initialDonations = normalizeDonationPayload(initialDonationPayload)
 
 export function buildLeaderboard(donations) {
   const leaders = new Map()
@@ -129,11 +134,11 @@ export function donationFingerprint(payload) {
 
 export async function fetchDonationPayload(signal) {
   const baseUrl = import.meta.env.BASE_URL
+  const staticUrl = `${baseUrl}data/donations.json?ts=${Date.now()}`
   const apiUrl = `${baseUrl}api/donations.php?ts=${Date.now()}`
-  const staticUrl = `${baseUrl}data/donations.json?ts=${Math.floor(Date.now() / 60000)}`
 
   try {
-    const response = await fetch(apiUrl, { cache: 'no-store', signal })
+    const response = await fetch(staticUrl, { cache: 'no-store', signal })
     const contentType = response.headers.get('content-type') || ''
 
     if (response.ok && contentType.includes('application/json')) {
@@ -143,7 +148,7 @@ export async function fetchDonationPayload(signal) {
     if (error.name === 'AbortError') throw error
   }
 
-  const response = await fetch(staticUrl, { cache: 'no-store', signal })
+  const response = await fetch(apiUrl, { cache: 'no-store', signal })
   if (!response.ok) return emptyPayload
 
   return normalizeDonationPayload(await response.json())

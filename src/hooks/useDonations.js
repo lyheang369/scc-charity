@@ -1,16 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { DONATION_POLL_MS, donationFingerprint, fetchDonationPayload, normalizeDonationPayload } from '../lib/donations'
+import { DONATION_POLL_MS, donationFingerprint, fetchDonationPayload, initialDonations } from '../lib/donations'
 
 export function useDonations({ poll = true } = {}) {
-  const [payload, setPayload] = useState(() => normalizeDonationPayload())
-  const [loading, setLoading] = useState(true)
+  const [payload, setPayload] = useState(() => initialDonations)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const fingerprintRef = useRef('')
   const timerRef = useRef(null)
   const controllerRef = useRef(null)
   const mountedRef = useRef(false)
+  const inFlightRef = useRef(false)
 
   const load = useCallback(async () => {
+    if (inFlightRef.current) return
+    inFlightRef.current = true
     if (controllerRef.current) controllerRef.current.abort()
     const controller = new AbortController()
     controllerRef.current = controller
@@ -30,6 +33,7 @@ export function useDonations({ poll = true } = {}) {
     } catch (nextError) {
       if (mountedRef.current && nextError.name !== 'AbortError') setError(nextError)
     } finally {
+      inFlightRef.current = false
       if (mountedRef.current && !controller.signal.aborted) setLoading(false)
     }
   }, [])

@@ -289,6 +289,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     exit;
 }
 
+respond_with_cache($cacheFile, ['live' => true, 'status' => 'webhook-active']);
+
 $state = read_json_file($stateFile, ['offset' => null, 'lastSyncAt' => null]);
 $lastSync = isset($state['lastSyncAt']) ? strtotime((string) $state['lastSyncAt']) : false;
 

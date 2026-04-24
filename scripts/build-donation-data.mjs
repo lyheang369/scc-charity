@@ -5,6 +5,7 @@ import { buildDonationPayload, parseDonationMessages } from './donationParser.mj
 const root = resolve(import.meta.dirname, '..')
 const sourcePath = resolve(root, process.argv[2] || 'payment-data.txt')
 const outputPath = resolve(root, process.argv[3] || 'public/data/donations.json')
+const generatedModulePath = resolve(root, 'src/data/donations.generated.json')
 
 if (!existsSync(sourcePath)) {
   if (!existsSync(outputPath)) {
@@ -29,9 +30,12 @@ const nextJson = JSON.stringify(payload, null, 2) + '\n'
 const currentJson = existsSync(outputPath) ? readFileSync(outputPath, 'utf8') : ''
 
 mkdirSync(dirname(outputPath), { recursive: true })
+mkdirSync(dirname(generatedModulePath), { recursive: true })
 
 if (currentJson !== nextJson) {
   writeFileSync(outputPath, nextJson)
 }
+
+writeFileSync(generatedModulePath, nextJson)
 
 console.log(`Wrote ${payload.summary.donationCount} donations to ${outputPath}`)
