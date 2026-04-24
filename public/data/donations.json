@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-24T15:00:17.155Z",
+  "generatedAt": "2026-04-24T15:05:08.426Z",
   "source": "telegram-user",
   "donations": [
     {
@@ -43,7 +43,7 @@
       "method": "ABA KHQR",
       "bank": "Wing Bank (Cambodia) Plc",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T21:32:00+07:00"
+      "paidAt": "2026-04-24T21:32:05+07:00"
     },
     {
       "id": "trx-177704022637972",
@@ -57,7 +57,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T21:17:00+07:00"
+      "paidAt": "2026-04-24T21:17:06+07:00"
     },
     {
       "id": "trx-177703932985309",
@@ -71,7 +71,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T21:02:00+07:00"
+      "paidAt": "2026-04-24T21:02:10+07:00"
     },
     {
       "id": "trx-177703596468049",
@@ -85,7 +85,7 @@
       "method": "ABA KHQR",
       "bank": "ACLBKHPPXXX",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T20:06:00+07:00"
+      "paidAt": "2026-04-24T20:06:05+07:00"
     },
     {
       "id": "trx-177703349854037",
@@ -99,7 +99,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T19:24:00+07:00"
+      "paidAt": "2026-04-24T19:24:59+07:00"
     },
     {
       "id": "trx-177703267426634",
@@ -113,7 +113,7 @@
       "method": "ABA KHQR",
       "bank": "ACLEDA Bank Plc.",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T19:11:15+07:00"
+      "paidAt": "2026-04-24T19:11:14+07:00"
     },
     {
       "id": "trx-177702482911620",
@@ -127,7 +127,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T17:00:32+07:00"
+      "paidAt": "2026-04-24T17:00:31+07:00"
     },
     {
       "id": "trx-177702325226821",
@@ -141,7 +141,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T16:34:13+07:00"
+      "paidAt": "2026-04-24T16:34:12+07:00"
     },
     {
       "id": "trx-177702133162407",
@@ -155,7 +155,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T16:02:41+07:00"
+      "paidAt": "2026-04-24T16:02:11+07:00"
     },
     {
       "id": "trx-177702129914689",
@@ -169,7 +169,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T16:01:41+07:00"
+      "paidAt": "2026-04-24T16:01:40+07:00"
     },
     {
       "id": "trx-177701879068575",
@@ -183,7 +183,7 @@
       "method": "ABA PAY",
       "bank": "",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T15:19:51+07:00"
+      "paidAt": "2026-04-24T15:19:50+07:00"
     },
     {
       "id": "trx-177701474282839",
@@ -197,7 +197,7 @@
       "method": "ABA KHQR",
       "bank": "ACLEDA Bank Plc.",
       "recipient": "HEANG ROTH NIRON",
-      "paidAt": "2026-04-24T14:12:26+07:00"
+      "paidAt": "2026-04-24T14:12:25+07:00"
     },
     {
       "id": "trx-177700785433456",
