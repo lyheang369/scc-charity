@@ -14,7 +14,7 @@ export default function EventDetails() {
   return (
     <section id="event" className="section-padding bg-cream">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(340px,1.15fr)] gap-8 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] gap-8 lg:gap-14 items-start">
           <ScrollReveal>
             <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">{t.event.eyebrow}</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-6 md:mb-8">{t.event.headline}</h2>
