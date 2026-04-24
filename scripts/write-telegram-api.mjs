@@ -83,11 +83,15 @@ function http_json(string $url): ?array
         $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        if ($body === false || $status >= 400) {
+        if ($body === false) {
             return null;
         }
 
         $decoded = json_decode((string) $body, true);
+        if (is_array($decoded)) {
+            $decoded['_httpStatus'] = $status;
+        }
+
         return is_array($decoded) ? $decoded : null;
     }
 
@@ -285,6 +289,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     exit;
 }
 
+respond_with_cache($cacheFile, ['live' => true, 'status' => 'webhook-active']);
+
 $state = read_json_file($stateFile, ['offset' => null, 'lastSyncAt' => null]);
 $lastSync = isset($state['lastSyncAt']) ? strtotime((string) $state['lastSyncAt']) : false;
 
@@ -302,6 +308,11 @@ if (!empty($state['offset'])) {
 
 $response = http_json('https://api.telegram.org/bot' . $botToken . '/getUpdates?' . http_build_query($params));
 if (!$response || empty($response['ok'])) {
+    $description = (string) ($response['description'] ?? '');
+    if (($response['_httpStatus'] ?? 0) === 409 || str_contains($description, 'webhook')) {
+        respond_with_cache($cacheFile, ['live' => true, 'status' => 'webhook-active']);
+    }
+
     respond_with_cache($cacheFile, ['live' => false, 'status' => 'telegram-unavailable']);
 }
 
