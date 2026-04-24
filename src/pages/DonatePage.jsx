@@ -76,7 +76,23 @@ export default function DonatePage() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20">
+
+        {/* KHQR donation */}
+        <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] gap-6 md:gap-10 items-center rounded-3xl bg-white p-6 md:p-8 shadow-xl shadow-navy/8 mb-14">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.16em] uppercase text-orange mb-3">{d.khqr.scanLabel}</p>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-navy mb-3">{d.khqr.headline}</h2>
+            <p className="text-muted text-sm md:text-base leading-relaxed">{d.khqr.description}</p>
+          </div>
+          <div className="rounded-2xl bg-cream p-4 border border-navy/8">
+            <img
+              src={`${import.meta.env.BASE_URL}img/khqr-donation.jpg`}
+              alt={d.khqr.imageAlt}
+              className="w-full rounded-xl bg-white"
+            />
+          </div>
+        </div>
 
         {/* Primary contact — Telegram & Email */}
         <div className="text-center mb-8">
