@@ -11,9 +11,9 @@ import { formatRelativeTime } from '../lib/donations'
 export default function DonorsPage() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { donations, summary, generatedAt, syncedAt, live, loading, refresh } = useDonations()
+  const { donations, summary, generatedAt, syncedAt, checkedAt, live, loading, refresh } = useDonations()
   const labels = t.donations
-  const updatedAt = syncedAt || generatedAt || summary.lastDonationAt
+  const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
   return (
     <div className="min-h-screen bg-cream">
@@ -54,9 +54,10 @@ export default function DonorsPage() {
                   <button
                     type="button"
                     onClick={refresh}
+                    disabled={loading}
                     className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-2 text-white/70 hover:bg-white/12 hover:text-lime transition-colors"
                   >
-                    <RefreshCw size={13} /> {labels.refresh}
+                    <RefreshCw size={13} className={loading ? 'animate-spin' : ''} /> {labels.refresh}
                   </button>
                 </div>
               </div>
