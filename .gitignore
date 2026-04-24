@@ -3,6 +3,4 @@ dist
 .DS_Store
 *.local
 .claude/
-AGENTS.md
-CLAUDE.md
 payment-data.txt
