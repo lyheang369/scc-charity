@@ -10,9 +10,9 @@ import { DonationSummary, LeaderboardList, RecentDonationList } from './Donation
 export default function LiveDonations() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { donations, summary, generatedAt, syncedAt, live, loading } = useDonations()
+  const { donations, summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
   const labels = t.donations
-  const updatedAt = syncedAt || generatedAt || summary.lastDonationAt
+  const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
   return (
     <section id="donations" className="section-padding bg-cream">

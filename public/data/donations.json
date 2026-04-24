@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-24T14:22:36.680Z",
+  "generatedAt": "2026-04-24T14:35:18.100Z",
   "source": "payment-data.txt",
   "donations": [
+    {
+      "id": "trx-177704112419002",
+      "trxId": "177704112419002",
+      "apv": "583818",
+      "donorName": "LYHEANG LENG",
+      "displayName": "LYHEANG LENG",
+      "accountSuffix": "582",
+      "amount": 0.3,
+      "currency": "USD",
+      "method": "ABA KHQR Plc)",
+      "bank": "Wing Bank (Cambodia",
+      "recipient": "HEANG ROTH NIRON",
+      "paidAt": "2026-04-24T21:32:00+07:00"
+    },
     {
       "id": "trx-177704022637972",
       "trxId": "177704022637972",
@@ -159,10 +173,10 @@
     }
   ],
   "summary": {
-    "totalAmount": 72.7,
+    "totalAmount": 73,
     "currency": "USD",
-    "donationCount": 11,
-    "supporterCount": 11,
-    "lastDonationAt": "2026-04-24T21:17:00+07:00"
+    "donationCount": 12,
+    "supporterCount": 12,
+    "lastDonationAt": "2026-04-24T21:32:00+07:00"
   }
 }

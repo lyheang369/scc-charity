@@ -5,14 +5,17 @@ export function useDonations({ poll = true } = {}) {
   const [payload, setPayload] = useState(() => initialDonations)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [checkedAt, setCheckedAt] = useState(() => new Date().toISOString())
   const fingerprintRef = useRef('')
   const timerRef = useRef(null)
   const controllerRef = useRef(null)
   const mountedRef = useRef(false)
   const inFlightRef = useRef(false)
 
-  const load = useCallback(async () => {
-    if (inFlightRef.current) return
+  const load = useCallback(async ({ force = false, showLoading = false } = {}) => {
+    if (inFlightRef.current && !force) return
+    if (showLoading) setLoading(true)
+
     inFlightRef.current = true
     if (controllerRef.current) controllerRef.current.abort()
     const controller = new AbortController()
@@ -29,6 +32,7 @@ export function useDonations({ poll = true } = {}) {
         setPayload(nextPayload)
       }
 
+      setCheckedAt(new Date().toISOString())
       setError(null)
     } catch (nextError) {
       if (mountedRef.current && nextError.name !== 'AbortError') setError(nextError)
@@ -78,6 +82,7 @@ export function useDonations({ poll = true } = {}) {
     ...payload,
     loading,
     error,
-    refresh: load,
+    checkedAt,
+    refresh: () => load({ force: true, showLoading: true }),
   }
 }
