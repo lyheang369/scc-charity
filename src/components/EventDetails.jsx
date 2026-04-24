@@ -18,18 +18,23 @@ export default function EventDetails() {
           <div className="max-w-3xl">
             <span className="text-xs font-medium tracking-[0.18em] uppercase text-orange block mb-3">{t.event.eyebrow}</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-6 md:mb-8">{t.event.headline}</h2>
-            <div className="space-y-7 md:space-y-5">
+            <div className="space-y-4 md:space-y-5">
               {info.map(({ icon: Icon, label, isList }, i) => (
-                <div key={i} className="flex items-start gap-3 md:gap-4">
-                  <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center text-green shrink-0 mt-0.5"><Icon size={18} /></div>
+                <div key={i} className="grid grid-cols-[3.5rem_minmax(0,1fr)] md:grid-cols-[4rem_minmax(0,1fr)] gap-4 md:gap-5 items-start">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-green/10 flex items-center justify-center text-green shrink-0">
+                    <Icon size={22} strokeWidth={2.2} />
+                  </div>
                   {isList ? (
-                    <ul className="text-sm md:text-base text-navy-light space-y-1.5 list-disc pl-5 pt-0.5">
+                    <ul className="text-base md:text-lg text-navy-light leading-relaxed space-y-1.5 pt-1">
                       {label.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                        <li key={idx} className="flex gap-3">
+                          <span className="mt-3 h-1.5 w-1.5 rounded-full bg-navy-light/80 shrink-0" />
+                          <span>{item}</span>
+                        </li>
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-sm md:text-base text-navy-light">{label}</span>
+                    <span className="text-base md:text-lg text-navy-light leading-relaxed pt-3">{label}</span>
                   )}
                 </div>
               ))}

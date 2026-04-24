@@ -87,7 +87,7 @@ export default function DonatePage() {
           </div>
           <div className="rounded-2xl bg-cream p-4 border border-navy/8">
             <img
-              src={`${import.meta.env.BASE_URL}img/khqr-donation.jpg`}
+              src={`${import.meta.env.BASE_URL}img/khqr-donation.png`}
               alt={d.khqr.imageAlt}
               className="w-full rounded-xl bg-white"
             />
