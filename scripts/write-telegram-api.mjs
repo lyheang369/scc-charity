@@ -162,12 +162,14 @@ function parse_donations(string $text, ?int $messageDate): array
         $second = $header['second'] ?? $fallbackDate['second'];
         $rawMethod = trim($match[9][0]);
         $bank = '';
+        $method = $rawMethod;
+        $firstParenthesis = strpos($rawMethod, '(');
 
-        if (preg_match('/\\(([^)]+)\\)/', $rawMethod, $bankMatch)) {
-            $bank = trim($bankMatch[1]);
+        if ($firstParenthesis !== false && str_ends_with($rawMethod, ')')) {
+            $bank = trim(substr($rawMethod, $firstParenthesis + 1, -1));
+            $method = trim(substr($rawMethod, 0, $firstParenthesis));
         }
 
-        $method = trim(preg_replace('/\\s*\\([^)]+\\)/', '', $rawMethod));
         $trxId = trim($match[11][0]);
         $donorName = preg_replace('/\\s+/', ' ', trim($match[2][0]));
         $accountSuffix = trim($match[3][0]);

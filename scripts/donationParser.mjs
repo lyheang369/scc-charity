@@ -62,11 +62,12 @@ function findNearestHeader(text, offset) {
 }
 
 function extractMethod(rawMethod) {
-  const bankMatch = rawMethod.match(/\(([^)]+)\)/)
+  const firstParenthesis = rawMethod.indexOf('(')
+  const hasOuterBank = firstParenthesis >= 0 && rawMethod.endsWith(')')
 
   return {
-    method: rawMethod.replace(/\s*\([^)]+\)/g, '').trim(),
-    bank: bankMatch?.[1]?.trim() || '',
+    method: hasOuterBank ? rawMethod.slice(0, firstParenthesis).trim() : rawMethod.trim(),
+    bank: hasOuterBank ? rawMethod.slice(firstParenthesis + 1, -1).trim() : '',
   }
 }
 
