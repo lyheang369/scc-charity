@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-24T15:05:08.426Z",
+  "generatedAt": "2026-04-24T16:10:26.407Z",
   "source": "telegram-user",
   "donations": [
+    {
+      "id": "trx-177704346841681",
+      "trxId": "177704346841681",
+      "apv": "917698",
+      "donorName": "HEANG ROTH NIRON",
+      "displayName": "HEANG ROTH NIRON *333",
+      "accountSuffix": "333",
+      "amount": 0.01,
+      "currency": "USD",
+      "method": "ABA PAY",
+      "bank": "",
+      "recipient": "HEANG ROTH NIRON",
+      "paidAt": "2026-04-24T22:11:09+07:00"
+    },
     {
       "id": "trx-177704228344896",
       "trxId": "177704228344896",
@@ -971,10 +985,10 @@
     }
   ],
   "summary": {
-    "totalAmount": 260.59,
+    "totalAmount": 260.6,
     "currency": "USD",
-    "donationCount": 69,
+    "donationCount": 70,
     "supporterCount": 66,
-    "lastDonationAt": "2026-04-24T21:51:23+07:00"
+    "lastDonationAt": "2026-04-24T22:11:09+07:00"
   }
 }
