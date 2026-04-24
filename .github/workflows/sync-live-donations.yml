@@ -1,0 +1,46 @@
+name: Sync Live Donations
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-live-donations
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Import live cPanel donation data
+        env:
+          LIVE_DONATIONS_URL: https://scc-charity.com/data/donations.json
+        run: npm run donations:import-live
+
+      - name: Commit donation data
+        run: |
+          if git diff --quiet -- public/data/donations.json; then
+            echo "No donation data changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/donations.json
+          git commit -m "chore: sync live donation data"
+          git push

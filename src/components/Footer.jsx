@@ -8,6 +8,7 @@ export default function Footer() {
     { href: '#about', label: t.nav.about },
     { href: '#mission', label: t.nav.mission },
     { href: '#impact', label: t.nav.impact },
+    { href: '#donors', label: t.nav.donors },
     { href: '#event', label: t.nav.event },
     { href: '#help', label: t.nav.help },
   ];

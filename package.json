@@ -4,9 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/build-donation-data.mjs",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "donations:build": "node scripts/build-donation-data.mjs",
+    "donations:sync": "node scripts/sync-telegram-donations.mjs",
+    "donations:watch": "node scripts/sync-telegram-donations.mjs --watch",
+    "donations:api": "node scripts/write-telegram-api.mjs",
+    "donations:webhook": "node scripts/set-telegram-webhook.mjs",
+    "donations:import-live": "node scripts/import-live-donations.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.8.0",
