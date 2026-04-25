@@ -11,7 +11,7 @@ import { formatRelativeTime } from '../lib/donations'
 export default function DonorsPage() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
+  const { summary, generatedAt, syncedAt, checkedAt, loading } = useDonations()
   const labels = t.donations
   const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
@@ -36,10 +36,6 @@ export default function DonorsPage() {
 
             <div className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-8 lg:gap-12 items-end">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-lime mb-4">
-                  <span className={`w-2 h-2 rounded-full ${live ? 'bg-lime' : 'bg-orange'}`} />
-                  {live ? labels.statusLive : labels.statusFallback}
-                </div>
                 <p className="text-xs font-semibold tracking-[0.16em] uppercase text-lime mb-3">{labels.pageEyebrow}</p>
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream leading-tight mb-4">
                   {labels.pageHeadline}
@@ -48,7 +44,7 @@ export default function DonorsPage() {
               </div>
 
               <div className="lg:justify-self-end w-full lg:max-w-xl">
-                <DonationSummary summary={summary} labels={labels} />
+                <DonationSummary summary={summary} labels={labels} tone="dark" />
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-white/45">
                   <span>{loading ? labels.loading : labels.updated} {updatedAt ? formatRelativeTime(updatedAt, language) : ''}</span>
                 </div>

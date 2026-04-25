@@ -1,20 +1,30 @@
 import { Banknote } from 'lucide-react'
 import { buildLeaderboard, formatDonationAmount, formatRelativeTime } from '../lib/donations'
 
-export function DonationSummary({ summary, labels }) {
+export function DonationSummary({ summary, labels, tone = 'light' }) {
   const items = [
     { icon: Banknote, label: labels.totalRaised, value: formatDonationAmount(summary.totalAmount) },
   ]
+  const dark = tone === 'dark'
 
   return (
     <div className="grid gap-3">
       {items.map(({ icon: Icon, label, value }) => (
-        <div key={label} className="rounded-lg border border-navy/8 bg-white px-4 py-4">
-          <div className="flex items-center gap-2 text-muted mb-2">
+        <div
+          key={label}
+          className={`border-l-2 pl-5 py-1 ${
+            dark ? 'border-lime/80' : 'border-orange/70'
+          }`}
+        >
+          <div className={`flex items-center gap-2 mb-3 ${dark ? 'text-white/60' : 'text-muted'}`}>
             <Icon size={16} />
             <span className="text-[10px] uppercase tracking-[0.14em]">{label}</span>
           </div>
-          <div className="font-display text-3xl md:text-4xl font-bold text-navy">{value}</div>
+          <div className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-none ${
+            dark ? 'text-cream' : 'text-navy'
+          }`}>
+            {value}
+          </div>
         </div>
       ))}
     </div>

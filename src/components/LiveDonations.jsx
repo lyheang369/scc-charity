@@ -10,7 +10,7 @@ import { DonationSummary } from './DonationHonorRoll'
 export default function LiveDonations() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
+  const { summary, generatedAt, syncedAt, checkedAt, loading } = useDonations()
   const labels = t.donations
   const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
@@ -19,10 +19,6 @@ export default function LiveDonations() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <ScrollReveal className="grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-8 lg:gap-12 items-end mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-lime-soft px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy mb-4">
-              <span className={`w-2 h-2 rounded-full ${live ? 'bg-lime' : 'bg-orange'}`} />
-              {live ? labels.statusLive : labels.statusFallback}
-            </div>
             <p className="text-xs font-semibold tracking-[0.16em] uppercase text-orange mb-3">{labels.eyebrow}</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-navy leading-tight mb-4">
               {labels.headline}
@@ -33,7 +29,7 @@ export default function LiveDonations() {
           <div className="lg:justify-self-end w-full lg:max-w-xl">
             <DonationSummary summary={summary} labels={labels} />
             <div className="mt-3 flex items-center gap-2 text-xs text-muted">
-              <Radio size={14} className={live ? 'text-lime' : 'text-orange'} />
+              <Radio size={14} className="text-orange" />
               <span>
                 {loading ? labels.loading : labels.updated}{' '}
                 {updatedAt ? formatRelativeTime(updatedAt, language) : ''}
