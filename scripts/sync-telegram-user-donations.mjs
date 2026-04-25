@@ -22,6 +22,25 @@ function writeJson(path, payload) {
   writeFileSync(path, JSON.stringify(payload, null, 2) + '\n')
 }
 
+function donationSignature(donations = []) {
+  return donations
+    .map((donation) => [
+      donation.id || '',
+      donation.trxId || '',
+      donation.apv || '',
+      donation.donorName || '',
+      donation.accountSuffix || '',
+      Number(donation.amount || 0).toFixed(2),
+      donation.currency || 'USD',
+      donation.method || '',
+      donation.bank || '',
+      donation.recipient || '',
+      donation.paidAt || '',
+    ].join('\u001f'))
+    .sort()
+    .join('\u001e')
+}
+
 async function main() {
   const session = readSession()
 
@@ -51,14 +70,15 @@ async function main() {
 
   const currentPayload = readJson(dataPath, buildDonationPayload([], 'telegram-user'))
   const mergedDonations = mergeDonations(currentPayload.donations || [], incoming)
+  const hasDonationChanges = donationSignature(mergedDonations) !== donationSignature(currentPayload.donations || [])
   const nextPayload = buildDonationPayload(mergedDonations, incoming.length ? 'telegram-user' : currentPayload.source || 'telegram-user')
 
-  if (incoming.length) {
+  if (hasDonationChanges) {
     writeJson(dataPath, nextPayload)
     writeJson(generatedModulePath, nextPayload)
   }
 
-  console.log(`Read ${messages.length} Telegram messages; parsed ${incoming.length} donation record(s); ${nextPayload.summary.donationCount} total`)
+  console.log(`Read ${messages.length} Telegram messages; parsed ${incoming.length} donation record(s); ${nextPayload.summary.donationCount} total; ${hasDonationChanges ? 'updated donation data' : 'no donation changes'}`)
 }
 
 main().catch((error) => {
