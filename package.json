@@ -11,7 +11,6 @@
     "donations:build": "node scripts/build-donation-data.mjs",
     "donations:sync": "node scripts/sync-telegram-donations.mjs",
     "donations:watch": "node scripts/sync-telegram-donations.mjs --watch",
-    "donations:import-live": "node scripts/import-live-donations.mjs",
     "telegram:login": "node scripts/login-telegram-user.mjs",
     "telegram:sync": "node scripts/sync-telegram-user-donations.mjs"
   },

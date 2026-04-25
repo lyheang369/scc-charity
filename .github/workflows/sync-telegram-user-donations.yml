@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: sync-telegram-user-donations
@@ -38,9 +39,11 @@ jobs:
         run: npm run telegram:sync
 
       - name: Commit donation data
+        id: commit
         run: |
           if git diff --quiet -- public/data/donations.json src/data/donations.generated.json; then
             echo "No donation data changes"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -48,3 +51,12 @@ jobs:
           git add public/data/donations.json src/data/donations.generated.json
           git commit -m "chore: sync telegram donation data"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy updated donation data
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run deploy-cpanel.yml --ref main
+          gh workflow run deploy.yml --ref main
