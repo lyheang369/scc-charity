@@ -117,7 +117,7 @@ const content = {
     donations: {
       eyebrow: "Donor Honor Roll",
       headline: "Live donations, shown with gratitude.",
-      description: "KHQR and ABA PayWay donations appear here after the bank notification reaches our Telegram group.",
+      description: "KHQR and ABA PayWay donations update the campaign total automatically after bank confirmation.",
       pageEyebrow: "SCC Donation Ledger",
       pageHeadline: "Donor Honor Roll",
       pageDescription: "A public thank-you page for everyone supporting Smile of Cambodian Children through KHQR and ABA PayWay.",
@@ -134,7 +134,6 @@ const content = {
       donated: "Donated",
       updated: "Updated",
       loading: "Checking donations",
-      refresh: "Refresh",
       viewAll: "View all",
       donateNow: "Donate now",
       noDonations: "No donations have been recorded yet.",
@@ -279,7 +278,7 @@ const content = {
     donations: {
       eyebrow: "បញ្ជីកិត្តិយសអ្នកបរិច្ចាគ",
       headline: "ការបរិច្ចាគបង្ហាញផ្ទាល់ ដោយការដឹងគុណ។",
-      description: "ការបរិច្ចាគតាម KHQR និង ABA PayWay នឹងបង្ហាញនៅទីនេះ បន្ទាប់ពីសារជូនដំណឹងធនាគារទៅដល់ក្រុម Telegram របស់យើង។",
+      description: "ការបរិច្ចាគតាម KHQR និង ABA PayWay នឹងធ្វើបច្ចុប្បន្នភាពថវិកាសរុបដោយស្វ័យប្រវត្តិ បន្ទាប់ពីធនាគារបញ្ជាក់។",
       pageEyebrow: "បញ្ជីបរិច្ចាគ SCC",
       pageHeadline: "បញ្ជីកិត្តិយសអ្នកបរិច្ចាគ",
       pageDescription: "ទំព័រថ្លែងអំណរគុណជាសាធារណៈសម្រាប់អ្នកគ្រប់គ្នាដែលគាំទ្រ Smile of Cambodian Children តាម KHQR និង ABA PayWay។",
@@ -296,7 +295,6 @@ const content = {
       donated: "បានបរិច្ចាគ",
       updated: "បានធ្វើបច្ចុប្បន្នភាព",
       loading: "កំពុងពិនិត្យការបរិច្ចាគ",
-      refresh: "ធ្វើបច្ចុប្បន្នភាព",
       viewAll: "មើលទាំងអស់",
       donateNow: "បរិច្ចាគឥឡូវនេះ",
       noDonations: "មិនទាន់មានកំណត់ត្រាបរិច្ចាគនៅឡើយទេ។",

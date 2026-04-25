@@ -83,6 +83,5 @@ export function useDonations({ poll = true } = {}) {
     loading,
     error,
     checkedAt,
-    refresh: () => load({ force: true, showLoading: true }),
   }
 }

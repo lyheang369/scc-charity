@@ -135,7 +135,6 @@ export function donationFingerprint(payload) {
 export async function fetchDonationPayload(signal) {
   const baseUrl = import.meta.env.BASE_URL
   const staticUrl = `${baseUrl}data/donations.json?ts=${Date.now()}`
-  const apiUrl = `${baseUrl}api/donations.php?ts=${Date.now()}`
 
   try {
     const response = await fetch(staticUrl, { cache: 'no-store', signal })
@@ -148,8 +147,5 @@ export async function fetchDonationPayload(signal) {
     if (error.name === 'AbortError') throw error
   }
 
-  const response = await fetch(apiUrl, { cache: 'no-store', signal })
-  if (!response.ok) return emptyPayload
-
-  return normalizeDonationPayload(await response.json())
+  return emptyPayload
 }

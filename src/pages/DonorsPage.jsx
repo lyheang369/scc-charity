@@ -1,4 +1,4 @@
-import { ArrowLeft, RefreshCw } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useContext } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -11,7 +11,7 @@ import { formatRelativeTime } from '../lib/donations'
 export default function DonorsPage() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { summary, generatedAt, syncedAt, checkedAt, live, loading, refresh } = useDonations()
+  const { summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
   const labels = t.donations
   const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
@@ -51,14 +51,6 @@ export default function DonorsPage() {
                 <DonationSummary summary={summary} labels={labels} />
                 <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-white/45">
                   <span>{loading ? labels.loading : labels.updated} {updatedAt ? formatRelativeTime(updatedAt, language) : ''}</span>
-                  <button
-                    type="button"
-                    onClick={refresh}
-                    disabled={loading}
-                    className="inline-flex items-center gap-2 rounded-full bg-white/8 px-3 py-2 text-white/70 hover:bg-white/12 hover:text-lime transition-colors"
-                  >
-                    <RefreshCw size={13} className={loading ? 'animate-spin' : ''} /> {labels.refresh}
-                  </button>
                 </div>
               </div>
             </div>
