@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-25T01:59:17.376Z",
+  "generatedAt": "2026-04-25T04:41:43.627Z",
   "source": "telegram-user",
   "donations": [
+    {
+      "id": "trx-177708688983836",
+      "trxId": "177708688983836",
+      "apv": "136882",
+      "donorName": "VANNA ZANNANIN",
+      "displayName": "VANNA ZANNANIN",
+      "accountSuffix": "802",
+      "amount": 1,
+      "currency": "USD",
+      "method": "ABA PAY",
+      "bank": "",
+      "recipient": "HEANG ROTH NIRON",
+      "paidAt": "2026-04-25T10:14:49+07:00"
+    },
     {
       "id": "trx-177704346841681",
       "trxId": "177704346841681",
@@ -985,10 +999,10 @@
     }
   ],
   "summary": {
-    "totalAmount": 260.6,
+    "totalAmount": 261.6,
     "currency": "USD",
-    "donationCount": 70,
-    "supporterCount": 66,
-    "lastDonationAt": "2026-04-24T22:11:09+07:00"
+    "donationCount": 71,
+    "supporterCount": 67,
+    "lastDonationAt": "2026-04-25T10:14:49+07:00"
   }
 }
