@@ -1,8 +1,36 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-25T11:11:21.785Z",
+  "generatedAt": "2026-04-25T11:54:11.874Z",
   "source": "telegram-user",
   "donations": [
+    {
+      "id": "trx-177711696087174",
+      "trxId": "177711696087174",
+      "apv": "529535",
+      "donorName": "LOEUNG CHINGMEY",
+      "displayName": "LOEUNG CHINGMEY",
+      "accountSuffix": "679",
+      "amount": 1,
+      "currency": "USD",
+      "method": "ABA PAY",
+      "bank": "",
+      "recipient": "HEANG ROTH NIRON",
+      "paidAt": "2026-04-25T18:36:00+07:00"
+    },
+    {
+      "id": "trx-177711695223586",
+      "trxId": "177711695223586",
+      "apv": "838987",
+      "donorName": "SOK BAOPEY",
+      "displayName": "SOK BAOPEY",
+      "accountSuffix": "488",
+      "amount": 1,
+      "currency": "USD",
+      "method": "ABA PAY",
+      "bank": "",
+      "recipient": "HEANG ROTH NIRON",
+      "paidAt": "2026-04-25T18:35:53+07:00"
+    },
     {
       "id": "trx-177708688983836",
       "trxId": "177708688983836",
@@ -999,10 +1027,10 @@
     }
   ],
   "summary": {
-    "totalAmount": 261.6,
+    "totalAmount": 263.6,
     "currency": "USD",
-    "donationCount": 71,
-    "supporterCount": 67,
-    "lastDonationAt": "2026-04-25T10:14:49+07:00"
+    "donationCount": 73,
+    "supporterCount": 69,
+    "lastDonationAt": "2026-04-25T18:36:00+07:00"
   }
 }
