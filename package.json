@@ -4,21 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/build-donation-data.mjs",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "donations:build": "node scripts/build-donation-data.mjs",
-    "donations:sync": "node scripts/sync-telegram-donations.mjs",
-    "donations:watch": "node scripts/sync-telegram-donations.mjs --watch",
-    "telegram:login": "node scripts/login-telegram-user.mjs",
-    "telegram:sync": "node scripts/sync-telegram-user-donations.mjs"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "telegram": "^2.26.22"
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",

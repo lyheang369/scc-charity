@@ -27,13 +27,12 @@
 
 - **Bilingual** — Full English and Khmer (ភាសាខ្មែរ) support with a globe-icon dropdown switcher; all text in `src/data/content.js`
 - **Donation Page** — Hash-routed `/donate` page with Telegram, Email, and Facebook contact cards
-- **Live Donor Honor Roll** — Home-page donation feed and `#donors` leaderboard backed by ABA/KHQR payment records
 - **Rotating Hero Phrases** — Language-aware inspirational phrases that crossfade every 4 seconds
 - **Count-Up Animation** — Impact numbers animate when scrolled into view
 - **Smart Navbar** — Logo and colors auto-adapt between dark (hero) and light (scrolled) surfaces; glass overlay fades via opacity to avoid backdrop-filter flash
 - **Mobile Menu** — Full-screen overlay with staggered animations and hamburger → × transition
 - **Scroll Reveal** — Sections fade-up as the user scrolls
-- **Static-first Deployment** — GitHub Pages uses generated JSON; cPanel can run the generated Telegram PHP bridge for live updates
+- **Static-first Deployment** — GitHub Pages and cPanel deploy the Vite build output
 
 ---
 
@@ -56,21 +55,7 @@ npm install
 npm run dev        # → http://localhost:5173
 npm run build      # → /dist
 npm run preview
-npm run donations:build  # rebuild public/data/donations.json from payment-data.txt
-npm run donations:watch  # local Telegram polling when TG_API_BOT is in .env
-npm run telegram:login   # one-time MTProto login for reading the payment group
-npm run telegram:sync    # sync PayWay messages from the Telegram group
 ```
-
-## Donation Updates
-
-Historical donations are generated from `payment-data.txt` into `public/data/donations.json`. The browser polls every few seconds and first tries `api/donations.php`; if that endpoint is unavailable, it falls back to the static JSON file.
-
-For cPanel deploys, GitHub Actions runs `npm run donations:api` after the Vite build and writes `dist/api/donations.php` using the `TG_API_BOT` secret and Telegram group ID `-1003796814691`. After FTP deploy, the workflow runs `npm run donations:webhook` so Telegram pushes new group messages directly to `https://scc-charity.com/api/donations.php`. Keep the bot token in `.env` locally or GitHub Secrets only; do not expose it in React code.
-
-If `TG_WEBHOOK_SECRET` is not set, the deploy script derives a stable webhook secret from `TG_API_BOT`. The optional `Sync Live Donations` workflow imports the live cPanel JSON back into the repository every 5 minutes so GitHub Pages and repo history catch up with live donations.
-
-For PayWay messages that Telegram does not expose to bots, use the Telegram user-session sync. Run `npm run telegram:login` locally once, then store `TG_API_ID`, `TG_API_HASH`, and `TG_USER_SESSION` as GitHub Secrets. The `Sync Telegram User Donations` workflow reads the payment group every 5 minutes and commits any new donation JSON.
 
 ---
 
@@ -80,8 +65,7 @@ For PayWay messages that Telegram does not expose to bots, use the Telegram user
 src/
 ├── components/        # Page sections (Hero, About, Impact, Navbar…)
 ├── pages/
-│   ├── DonatePage.jsx # Donation contact page (hash-routed #donate)
-│   └── DonorsPage.jsx # Donor honor roll page (hash-routed #donors)
+│   └── DonatePage.jsx # Donation contact page (hash-routed #donate)
 ├── context/           # LanguageContext — EN/KM toggle state
 ├── data/
 │   └── content.js     # All bilingual text lives here — edit both en and km
