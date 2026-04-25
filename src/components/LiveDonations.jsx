@@ -1,16 +1,16 @@
-import { ArrowRight, Radio } from 'lucide-react'
+import { Radio } from 'lucide-react'
 import { useContext } from 'react'
 import { LanguageContext } from '../context/LanguageContext'
 import { useTranslation } from '../hooks/useTranslation'
 import { useDonations } from '../hooks/useDonations'
 import { formatRelativeTime } from '../lib/donations'
 import ScrollReveal from './ScrollReveal'
-import { DonationSummary, LeaderboardList, RecentDonationList } from './DonationHonorRoll'
+import { DonationSummary } from './DonationHonorRoll'
 
 export default function LiveDonations() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { donations, summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
+  const { summary, generatedAt, syncedAt, checkedAt, live, loading } = useDonations()
   const labels = t.donations
   const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
@@ -41,28 +41,6 @@ export default function LiveDonations() {
             </div>
           </div>
         </ScrollReveal>
-
-        <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)] gap-6">
-          <ScrollReveal>
-            <div className="flex items-center justify-between gap-4 mb-4">
-              <h3 className="font-display text-2xl font-semibold text-navy">{labels.recentTitle}</h3>
-              <a href="#donors" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-orange hover:text-orange-dark transition-colors">
-                {labels.viewAll} <ArrowRight size={14} />
-              </a>
-            </div>
-            <RecentDonationList donations={donations} labels={labels} language={language} limit={5} />
-          </ScrollReveal>
-
-          <ScrollReveal delay="lg:delay-100">
-            <div className="flex items-center justify-between gap-4 mb-4">
-              <h3 className="font-display text-2xl font-semibold text-navy">{labels.leaderboardTitle}</h3>
-              <a href="#donate" className="text-xs font-semibold uppercase tracking-wide text-navy/55 hover:text-navy transition-colors">
-                {labels.donateNow}
-              </a>
-            </div>
-            <LeaderboardList donations={donations} labels={labels} limit={5} />
-          </ScrollReveal>
-        </div>
       </div>
     </section>
   )

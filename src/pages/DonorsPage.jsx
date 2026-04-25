@@ -2,7 +2,7 @@ import { ArrowLeft, RefreshCw } from 'lucide-react'
 import { useContext } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { DonationSummary, LeaderboardList, RecentDonationList } from '../components/DonationHonorRoll'
+import { DonationSummary } from '../components/DonationHonorRoll'
 import { LanguageContext } from '../context/LanguageContext'
 import { useDonations } from '../hooks/useDonations'
 import { useTranslation } from '../hooks/useTranslation'
@@ -11,7 +11,7 @@ import { formatRelativeTime } from '../lib/donations'
 export default function DonorsPage() {
   const t = useTranslation()
   const { language } = useContext(LanguageContext)
-  const { donations, summary, generatedAt, syncedAt, checkedAt, live, loading, refresh } = useDonations()
+  const { summary, generatedAt, syncedAt, checkedAt, live, loading, refresh } = useDonations()
   const labels = t.donations
   const updatedAt = checkedAt || syncedAt || generatedAt || summary.lastDonationAt
 
@@ -60,30 +60,6 @@ export default function DonorsPage() {
                     <RefreshCw size={13} className={loading ? 'animate-spin' : ''} /> {labels.refresh}
                   </button>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-padding bg-cream">
-          <div className="max-w-7xl mx-auto px-5 md:px-8">
-            <div className="grid lg:grid-cols-[minmax(320px,0.75fr)_minmax(0,1.25fr)] gap-8">
-              <div>
-                <h2 className="font-display text-2xl md:text-3xl font-semibold text-navy mb-4">{labels.leaderboardTitle}</h2>
-                <LeaderboardList donations={donations} labels={labels} limit={50} />
-              </div>
-
-              <div>
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-                  <h2 className="font-display text-2xl md:text-3xl font-semibold text-navy">{labels.allDonationsTitle}</h2>
-                  <a
-                    href="#donate"
-                    className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-orange to-orange-dark px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white hover:shadow-lg hover:shadow-orange/25 transition-all"
-                  >
-                    {labels.donateNow}
-                  </a>
-                </div>
-                <RecentDonationList donations={donations} labels={labels} language={language} limit={100} />
               </div>
             </div>
           </div>

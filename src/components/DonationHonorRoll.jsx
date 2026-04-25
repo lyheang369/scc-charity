@@ -1,22 +1,20 @@
-import { Banknote, Trophy, Users } from 'lucide-react'
+import { Banknote } from 'lucide-react'
 import { buildLeaderboard, formatDonationAmount, formatRelativeTime } from '../lib/donations'
 
 export function DonationSummary({ summary, labels }) {
   const items = [
     { icon: Banknote, label: labels.totalRaised, value: formatDonationAmount(summary.totalAmount) },
-    { icon: Users, label: labels.donors, value: summary.supporterCount },
-    { icon: Trophy, label: labels.gifts, value: summary.donationCount },
   ]
 
   return (
-    <div className="grid sm:grid-cols-3 gap-3">
+    <div className="grid gap-3">
       {items.map(({ icon: Icon, label, value }) => (
         <div key={label} className="rounded-lg border border-navy/8 bg-white px-4 py-4">
           <div className="flex items-center gap-2 text-muted mb-2">
             <Icon size={16} />
             <span className="text-[10px] uppercase tracking-[0.14em]">{label}</span>
           </div>
-          <div className="font-display text-xl md:text-2xl font-bold text-navy">{value}</div>
+          <div className="font-display text-3xl md:text-4xl font-bold text-navy">{value}</div>
         </div>
       ))}
     </div>
