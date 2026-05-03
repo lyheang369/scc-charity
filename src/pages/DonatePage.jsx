@@ -1,6 +1,7 @@
 import { ArrowLeft, Mail } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import Navbar from '../components/Navbar';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 const telegramIcon = (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
@@ -86,9 +87,11 @@ export default function DonatePage() {
             <p className="text-muted text-sm md:text-base leading-relaxed">{d.khqr.description}</p>
           </div>
           <div className="rounded-2xl bg-cream p-4 border border-navy/8">
-            <img
-              src={`${import.meta.env.BASE_URL}img/khqr-donation.png`}
+            <ResponsiveImage
+              webpSrc={`${import.meta.env.BASE_URL}img/khqr-donation.webp`}
+              fallbackSrc={`${import.meta.env.BASE_URL}img/khqr-donation.png`}
               alt={d.khqr.imageAlt}
+              loading="eager"
               className="w-full rounded-xl bg-white"
             />
           </div>

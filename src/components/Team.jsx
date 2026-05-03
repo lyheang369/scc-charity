@@ -1,5 +1,6 @@
 import { useTranslation } from '../hooks/useTranslation';
 import ScrollReveal from './ScrollReveal';
+import ResponsiveImage from './ResponsiveImage';
 
 export default function Team() {
   const t = useTranslation();
@@ -19,8 +20,9 @@ export default function Team() {
 
         <ScrollReveal>
           <div className="rounded-2xl overflow-hidden shadow-xl shadow-navy/10 border border-navy/6 max-w-3xl mx-auto">
-            <img
-              src={`${import.meta.env.BASE_URL}img/All_group_Members_image.JPEG`}
+            <ResponsiveImage
+              webpSrc={`${import.meta.env.BASE_URL}img/All_group_Members_image.webp`}
+              fallbackSrc={`${import.meta.env.BASE_URL}img/All_group_Members_image.JPEG`}
               alt={tm.photoCaption}
               className="w-full h-auto object-cover"
             />

@@ -18,7 +18,7 @@ There are no tests or linting configured in this project.
 
 **Stack:** React 19 + Vite 8 + Tailwind CSS v4 (via `@tailwindcss/vite` plugin) + `lucide-react` icons.
 
-**Output:** `npm run build` produces a fully static `/dist` folder deployed to GitHub Pages under the `/scc-charity/` base path (set in `vite.config.js`). All internal asset paths must respect this base — use `import.meta.env.BASE_URL` for dynamic references.
+**Output:** `npm run build` produces a fully static `/dist` folder deployed to GitHub Pages and cPanel. `vite.config.js` sets `base: '/'`. All internal asset paths must use `import.meta.env.BASE_URL` for dynamic references.
 
 ### Environment & Secrets
 
@@ -70,25 +70,42 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 | `useTranslation()` | `src/hooks/useTranslation.js` | Returns `content[language]` from context |
 | `useInView(threshold, { once })` | `src/hooks/useInView.js` | `IntersectionObserver` wrapper. `once: true` (default) fires once and disconnects — used by `ScrollReveal`. `once: false` re-fires on every enter/exit — used for repeating animations. |
 | `useCountUp(target, { duration, started })` | `src/hooks/useCountUp.js` | Animates a number from 0 to `target` using ease-out cubic when `started` flips to `true`. Resets to 0 when `started` becomes `false`. |
-| `useDonationHistory()` | `src/hooks/useDonationHistory.js` | Loads historical payment data from `payment-data.txt` and parses it into structured donor records |
-| `useTelegramPoller()` | `src/hooks/useTelegramPoller.js` | Polls Telegram Bot API every 5-10 seconds for new donation notifications in the group chat |
+| `useDonations({ poll })` | `src/hooks/useDonations.js` | Fetches `public/data/donations.json` on mount and polls every `DONATION_POLL_MS` (2 s). Skips fetch when tab is hidden. Returns `{ donations, summary, loading, error, checkedAt, refresh }`. |
 
 ### Donation System
 
-**Real-time Donation Feed:**
-- `DonorsPage.jsx` — dedicated leaderboard page showing all donors
-- `LiveDonationsFeed.jsx` — compact feed component embedded in homepage
-- `DonorCard.jsx` — formal display: "Name Donated $X.XX Y minutes ago"
-- Payment notifications from Telegram group are parsed and displayed
-- Name disambiguation: if names match, suffix with last 3 digits of bank account (e.g., "LENG Lyheang (*267)")
+**Architecture:**
+- `src/lib/donations.js` — all data utilities: `normalizeDonationPayload`, `buildLeaderboard`, `formatDonationAmount`, `formatRelativeTime`, `donationFingerprint`, `fetchDonationPayload`
+- `src/data/donations.generated.json` — baked-in snapshot imported at build time (seed data so page has content without a network request)
+- `public/data/donations.json` — polled at runtime; updated by CI/sync scripts
+- `public/data/donations-state.json` — last-known Telegram offset used by sync scripts
 
-**Payment Parsing:**
-- ABA PayWay notifications parsed from Telegram messages
-- Regex extracts: `NAME (*XXX)`, `$AMOUNT`, `Trx.ID`, time
-- Historical data stored in `payment-data.txt` (load on page load)
-- New donations detected via Telegram group message polling
+**Components:**
+- `LiveDonations.jsx` — homepage section; uses `useDonations()` and renders `DonationSummary` + `RecentDonationList` + `LeaderboardList`
+- `DonationHonorRoll.jsx` — exports three sub-components: `DonationSummary` (stats grid), `RecentDonationList` (chronological feed), `LeaderboardList` (ranked by total)
+- `DonorsPage.jsx` — dedicated leaderboard page (`#donors`) using the same components
+
+**Name disambiguation:** if two donations share the same `donorName`, the display name appends `*accountSuffix` (e.g., `LENG Lyheang *267`). Logic lives in `applyDisplayNames()` inside `src/lib/donations.js`.
+
+**Donation npm scripts:**
+```bash
+npm run donations:build        # Rebuild src/data/donations.generated.json from public/data/donations.json
+npm run donations:sync         # Pull new messages from Telegram Bot API → update public/data/donations.json
+npm run donations:watch        # Same as sync but keeps running (polling)
+npm run donations:api          # Write dist/api/donations.php using TG_API_BOT (runs in CI for cPanel)
+npm run donations:webhook      # Register Telegram webhook pointing to https://scc-charity.com/api/donations.php
+npm run donations:import-live  # Import live cPanel JSON back into the repo (used by CI sync workflow)
+npm run telegram:login         # Interactive Telegram user-session login (MTProto via gramjs)
+npm run telegram:sync          # Sync via user session instead of bot API
+```
+
+`prebuild` runs `donations:build` automatically before every `npm run build`.
+
+**Live donation fallback:** the browser first tries `api/donations.php` (present on cPanel deploys); if that endpoint is unavailable it falls back to `public/data/donations.json`.
 
 ### Components
+
+**`ResponsiveImage`** — renders a `<picture>` with a WebP `<source>` and a PNG/JPEG `<img>` fallback. Always use this for photos in `public/img/` when a `.webp` version exists alongside the original.
 
 **`ScrollReveal`** — wraps any content in a `useInView`-triggered fade-up animation (one-time, `once: true`).
 
@@ -145,11 +162,30 @@ These are brand-identity strings that don't need translation. Do not move them t
 
 ### Static assets
 
-Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
+Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `scc-black.svg` (black), `CamEd_Logo.png` / `CamEd_Logo.webp`. Reference them via `${import.meta.env.BASE_URL}logos/filename`. Never import from `src/` for `<img>` src — always use `public/`.
 
-`public/img/` contains group/event photos (`All_group_Members_image.JPEG`, `event-poster.jpg`). `event-poster.jpg` is referenced in `EventDetails.jsx` as a fallback but the primary poster display is now a styled text card driven by `t.event.poster` keys in `content.js`.
+`public/img/` contains group/event photos. Each image has both an original (`.JPEG`/`.jpg`/`.png`) and a `.webp` version — always serve `.webp` via `ResponsiveImage` with the original as fallback. `event-poster.jpg` is referenced in `EventDetails.jsx` as a fallback but the primary poster display is a styled text card driven by `t.event.poster` keys in `content.js`.
 
 The favicon and OG image in `index.html` point to `scc.svg`.
+
+### Coding conventions
+
+- ES modules throughout; component files use PascalCase (`Hero.jsx`), hooks use camelCase with `use` prefix (`useInView.js`)
+- 2-space indentation, single quotes, no semicolons unless required
+- Conventional Commit prefixes for commits: `fix:`, `feat:`, `docs:`, `chore:`
+- PRs for visual changes should include screenshots; content-only PRs should confirm both `en` and `km` were updated
+
+### CI/CD deployment
+
+Two parallel deploy workflows trigger on every push to `main`:
+- **GitHub Pages** (`deploy.yml`) — runs `npm run build`, uploads `dist/` via `actions/deploy-pages`
+- **cPanel** (`deploy-cpanel.yml`) — builds, runs `donations:api` (writes `dist/api/donations.php`), FTPs `dist/` to `scc-charity.com`, then calls `donations:webhook` to register the Telegram webhook
+
+Required GitHub Secrets for cPanel deploy: `TG_API_BOT`, `TG_WEBHOOK_SECRET` (optional — derived from token if absent), `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
+
+Two background sync workflows keep donation data fresh:
+- `sync-live-donations.yml` — imports live cPanel JSON back into the repo every 5 minutes so GitHub Pages stays current
+- `sync-telegram-user-donations.yml` — reads the PayWay payment group via MTProto every 5 minutes; requires `TG_API_ID`, `TG_API_HASH`, `TG_USER_SESSION` secrets
 
 ### Design system
 

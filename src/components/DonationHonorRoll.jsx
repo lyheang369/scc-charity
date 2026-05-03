@@ -1,4 +1,4 @@
-import { Banknote, Trophy, Users } from 'lucide-react'
+import { Banknote, Star, Trophy, Users } from 'lucide-react'
 import { buildLeaderboard, formatDonationAmount, formatRelativeTime } from '../lib/donations'
 
 export function DonationSummary({ summary, labels }) {
@@ -41,6 +41,16 @@ export function RecentDonationList({ donations, labels, language, limit = 5 }) {
               </p>
               <p className="font-semibold text-2xl text-orange mt-1 mb-0.5">{formatDonationAmount(donation.amount)}</p>
               <p className="text-xs text-muted mt-0.5">{formatRelativeTime(donation.paidAt, language)}</p>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-muted">
+                <span className="rounded-full bg-sand px-2.5 py-1">{donation.method}</span>
+                {donation.bank && <span className="rounded-full bg-lime-soft px-2.5 py-1">{donation.bank}</span>}
+                {donation.amount >= 10 && (
+                  <span className="flex items-center gap-1 rounded-full bg-orange/20 px-2.5 py-1 text-orange/80">
+                    <Star size={10} fill="currentColor" className="text-orange/80" />
+                    <span className="uppercase tracking-wide text-[0.6em]">Supporter</span>
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
