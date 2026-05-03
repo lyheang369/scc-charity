@@ -5,6 +5,8 @@ export default function Organizers() {
   const t = useTranslation();
   const o = t.organizers;
 
+  // Each logo file has different internal padding, so we size them
+  // individually to land at the same visual footprint.
   const entries = [
     {
       role: o.organizedBy,
@@ -12,6 +14,7 @@ export default function Organizers() {
       src: `${import.meta.env.BASE_URL}logos/scc.svg`,
       alt: 'Smile of Cambodian Children',
       pill: 'bg-orange/10 text-orange',
+      sizeClass: 'w-24 h-24 md:w-28 md:h-28',
     },
     {
       role: o.supportedBy,
@@ -19,6 +22,7 @@ export default function Organizers() {
       src: `${import.meta.env.BASE_URL}logos/CamEd_Logo.png`,
       alt: 'CamEd Business School',
       pill: 'bg-green/10 text-green',
+      sizeClass: 'w-36 h-36 md:w-44 md:h-44',
     },
   ];
 
@@ -26,7 +30,7 @@ export default function Organizers() {
     <section className="pt-4 pb-12 md:pb-16 bg-sand">
       <div className="max-w-5xl mx-auto px-5 md:px-8">
         <ScrollReveal>
-          <div className="flex flex-wrap items-start justify-center gap-10 md:gap-16">
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
             {entries.map((e) => (
               <div
                 key={e.alt}
@@ -40,9 +44,7 @@ export default function Organizers() {
                 <img
                   src={e.src}
                   alt={e.alt}
-                  width="96"
-                  height="96"
-                  className="group-hover:scale-105 transition-transform"
+                  className={`object-contain group-hover:scale-105 transition-transform ${e.sizeClass}`}
                 />
                 <span className="text-sm md:text-base font-semibold text-navy">{e.name}</span>
               </div>
