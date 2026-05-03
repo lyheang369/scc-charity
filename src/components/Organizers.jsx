@@ -11,25 +11,32 @@ export default function Organizers() {
       name: o.scc,
       src: `${import.meta.env.BASE_URL}logos/scc.svg`,
       alt: 'Smile of Cambodian Children',
-      bg: 'bg-white p-3',
+      logoBg: 'bg-white p-3',
+      pill: 'bg-orange/10 text-orange',
     },
     {
       role: o.supportedBy,
       name: o.camed,
       src: `${import.meta.env.BASE_URL}logos/CamEd_Logo.png`,
       alt: 'CamEd Business School',
-      bg: '',
+      logoBg: '',
+      pill: 'bg-green/10 text-green',
     },
   ];
 
   return (
-    <section className="pt-4 pb-12 md:pb-16 bg-sand text-center">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <section className="pt-4 pb-12 md:pb-16 bg-sand">
+      <div className="max-w-5xl mx-auto px-5 md:px-8">
         <ScrollReveal>
-          <div className="flex flex-wrap items-start justify-center gap-10 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
             {entries.map((e) => (
-              <div key={e.alt} className="flex flex-col items-center gap-3 group max-w-xs">
-                <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-orange">
+              <div
+                key={e.alt}
+                className="bg-white rounded-2xl px-6 py-7 md:py-8 shadow-sm shadow-navy/5 flex flex-col items-center text-center gap-4 group hover:-translate-y-0.5 transition-transform duration-200"
+              >
+                <span
+                  className={`inline-block text-[11px] font-semibold tracking-[0.18em] uppercase px-3 py-1 rounded-full ${e.pill}`}
+                >
                   {e.role}
                 </span>
                 <img
@@ -37,9 +44,9 @@ export default function Organizers() {
                   alt={e.alt}
                   width="96"
                   height="96"
-                  className={`rounded-xl drop-shadow-md group-hover:scale-105 transition-transform ${e.bg}`}
+                  className={`rounded-xl drop-shadow-md group-hover:scale-105 transition-transform ${e.logoBg}`}
                 />
-                <span className="text-sm font-medium text-navy">{e.name}</span>
+                <span className="text-sm md:text-base font-semibold text-navy">{e.name}</span>
               </div>
             ))}
           </div>
