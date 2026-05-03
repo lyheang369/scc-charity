@@ -153,11 +153,9 @@ The favicon and OG image in `index.html` point to `scc.svg`.
 
 ### CI/CD deployment
 
-`deploy.yml` triggers on every push to `main` — runs `npm run build` and uploads `dist/` via `actions/deploy-pages` to GitHub Pages. No other workflows or secrets are required.
-
-### Removed: live donations
-
-A Telegram-synced live-donations system (workflows `sync-live-donations.yml` / `sync-telegram-user-donations.yml`, `scripts/sync-telegram-*.mjs`, `DonationHonorRoll.jsx`, `LiveDonations.jsx`, `DonorsPage.jsx`, `useDonations.js`, `lib/donations.js`) was removed. `#donate` is now a static contact page only. If you see commits or branches referencing donation parsing, Telegram clients, or `donations.json`, that is the removed system — do not reintroduce it without asking.
+Two parallel workflows trigger on every push to `main`:
+- **`deploy.yml`** — builds and uploads `dist/` to GitHub Pages via `actions/deploy-pages`. No secrets required.
+- **`deploy-cpanel.yml`** — builds and FTPs `dist/` to `/scc-charity.com/` on cPanel using `SamKirkland/FTP-Deploy-Action`. Uses `dangerous-clean-slate: true` so each deploy wipes the directory before upload (ensures stale files from prior schemas don't linger). Requires `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` secrets.
 
 ### Design system
 
