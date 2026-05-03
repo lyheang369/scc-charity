@@ -90,11 +90,14 @@ const content = {
       placeholder: "Photo coming soon",
     },
     organizers: {
-      label: "Supported By",
+      organizedBy: "Organized By",
+      supportedBy: "Supported By",
+      scc: "Smile of Cambodian Children (SCC)",
       camed: "CamEd Business School",
     },
     sponsors: {
       eyebrow: "With Gratitude",
+      stripEyebrow: "Proudly Supported By",
       headline: "Our Generous Sponsors",
       description: "Thank you to the brands whose support powers our campaign. Their generosity directly reaches the children we serve.",
       typeInKind: "In-Kind Sponsor",
@@ -246,11 +249,14 @@ const content = {
       placeholder: "រូបថតនឹងមកដល់ឆាប់ៗ",
     },
     organizers: {
-      label: "គាំទ្រដោយ",
+      organizedBy: "រៀបចំដោយ",
+      supportedBy: "គាំទ្រដោយ",
+      scc: "ស្នាមញញឹមនៃកុមារកម្ពុជា (SCC)",
       camed: "CamEd Business School",
     },
     sponsors: {
       eyebrow: "ដោយក្ដីដឹងគុណ",
+      stripEyebrow: "ឧបត្ថម្ភដោយ",
       headline: "ម្ចាស់ឧបត្ថម្ភដ៏សប្បុរសរបស់យើង",
       description: "សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅដល់ម្ចាស់ឧបត្ថម្ភទាំងអស់ ដែលក្តីសប្បុរសរបស់ពួកគាត់ បានជួយជូនយុទ្ធនាការរបស់យើងទៅដល់កុមារដែលត្រូវការ។",
       typeInKind: "ឧបត្ថម្ភសម្ភារៈ",

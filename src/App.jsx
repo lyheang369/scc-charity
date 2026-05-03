@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import SponsorStrip from './components/SponsorStrip';
 import About from './components/About';
 import VisionMission from './components/VisionMission';
 import Impact from './components/Impact';
@@ -35,6 +36,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <SponsorStrip />
         <About />
         <VisionMission />
         <Impact />

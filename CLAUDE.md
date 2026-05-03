@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> A shorter `AGENTS.md` exists at the repo root for general agent contributors. Keep both in sync when project-wide conventions change.
+
 ## Commands
 
 ```bash
@@ -25,7 +27,9 @@ There are no tests or linting configured in this project.
 `App.jsx` uses a minimal hash router — no external library. A `usePage()` hook listens to `hashchange` and returns `window.location.hash`. Routes:
 
 - `#donate` → `<DonatePage>` (single donation contact page)
-- Any other hash (including empty) → main single-page layout
+- Empty hash and any in-page anchor (`#about`, `#sponsors`, etc.) → main single-page layout
+
+Only `#donate` is special-cased; in-page anchor hashes fall through to the main layout and scroll natively.
 
 To add a new page: add a new hash condition in `App.jsx` and create the component in `src/pages/`.
 
@@ -34,10 +38,12 @@ To add a new page: add a new hash condition in `App.jsx` and create the componen
 `main.jsx` wraps `<App>` in `<LanguageProvider>`. `App.jsx` renders sections in this order:
 
 ```
-Navbar → Hero → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Team → Sponsors → Organizers → Footer
+Navbar → Hero → SponsorStrip → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Team → Sponsors → Organizers → Footer
 ```
 
 `Gallery` is imported but its JSX usage is commented out in `App.jsx` (`{/* <Gallery /> */}`) pending real images. Uncomment that line to restore it.
+
+`SponsorStrip` and `Sponsors` both render from the same `sponsors.brands` array in `content.js` — adding/removing a brand updates both the slim above-the-fold strip and the full sponsors section.
 
 ### Bilingual system
 
@@ -50,7 +56,8 @@ Every component calls `const t = useTranslation()` and reads text as `t.section.
 Notable non-obvious keys:
 - `event.poster` — object with bilingual text for the styled poster card in `EventDetails`
 - `donate.khqr` — object for the KHQR donation QR section on the donate page
-- `sponsors.brands` — array of sponsor objects (`key`, `name`, `type`, `description`); `type` is either `inKind` or `financial` and maps to a labeled badge in `Sponsors.jsx`
+- `sponsors.brands` — array of sponsor objects (`key`, `name`, `type`, `description`); `type` is either `inKind` or `financial` and maps to a labeled badge in `Sponsors.jsx` and a tiny role label in `SponsorStrip.jsx`
+- `organizers.organizedBy` / `supportedBy` / `scc` / `camed` — per-logo role labels and names rendered in `Organizers.jsx`
 
 **`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
 
@@ -85,6 +92,10 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 **`Impact`** — stat cards use `useCountUp` triggered by `useInView(0.25)` (once only). Supply items render as icon cards in a 2×2 / 4-col grid using `lucide-react` icons mapped by index.
 
 **`Sponsors`** — two-card grid; each card pulls logo from `public/logos/{brand.key}.webp`. The `brand.type` (`inKind` | `financial`) selects the badge styling and icon (`Sparkles` for in-kind, `Heart` for financial).
+
+**`SponsorStrip`** — slim above-the-fold strip rendered between `Hero` and `About`. Reads from the same `sponsors.brands` array as `Sponsors`; uses `sponsors.stripEyebrow` and `sponsors.typeInKind`/`typeFinancial` for the per-logo role label. Each item links to `#sponsors`.
+
+**`Organizers`** — two-logo footer-adjacent block. Each entry shows a per-logo role label (`organizers.organizedBy` for SCC, `organizers.supportedBy` for CamEd). Renders from a local `entries` array — there is no shared data file.
 
 ### Tailwind v4 theme
 
@@ -129,7 +140,7 @@ Logos live in **`public/logos/`**: `scc.svg` (color), `scc-white.svg` (white), `
 
 `public/img/` contains group/event photos. Each image has both an original and a `.webp` version — always serve `.webp` via `ResponsiveImage` with the original as fallback.
 
-`scripts/convert-to-webp.mjs` and `scripts/convert-to-webp.sh` are utility scripts for batch-converting raster assets to WebP using `cwebp`.
+`scripts/convert-to-webp.sh` (uses `cwebp` via `brew install webp`) and `scripts/convert-to-webp.mjs` (uses `sharp` — **not currently in `package.json` deps**) are batch WebP utilities. Both have hard-coded file lists that still reference originals that have since been deleted (`All_group_Members_image.JPEG`, `event-poster.jpg`); update the array inside the script before re-running, or convert ad-hoc with `cwebp -q 85 input.png -o output.webp`.
 
 The favicon and OG image in `index.html` point to `scc.svg`.
 
@@ -143,6 +154,10 @@ The favicon and OG image in `index.html` point to `scc.svg`.
 ### CI/CD deployment
 
 `deploy.yml` triggers on every push to `main` — runs `npm run build` and uploads `dist/` via `actions/deploy-pages` to GitHub Pages. No other workflows or secrets are required.
+
+### Removed: live donations
+
+A Telegram-synced live-donations system (workflows `sync-live-donations.yml` / `sync-telegram-user-donations.yml`, `scripts/sync-telegram-*.mjs`, `DonationHonorRoll.jsx`, `LiveDonations.jsx`, `DonorsPage.jsx`, `useDonations.js`, `lib/donations.js`) was removed. `#donate` is now a static contact page only. If you see commits or branches referencing donation parsing, Telegram clients, or `donations.json`, that is the removed system — do not reintroduce it without asking.
 
 ### Design system
 
