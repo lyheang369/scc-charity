@@ -12,8 +12,6 @@ import Sponsors from './components/Sponsors';
 import Team from './components/Team';
 import Footer from './components/Footer';
 import DonatePage from './pages/DonatePage';
-import DonorsPage from './pages/DonorsPage';
-import LiveDonations from './components/LiveDonations';
 
 function usePage() {
   const [page, setPage] = useState(() => window.location.hash);
@@ -31,14 +29,12 @@ export default function App() {
   const page = usePage();
 
   if (page === '#donate') return <DonatePage />;
-  if (page === '#donors') return <DonorsPage />;
 
   return (
     <>
       <Navbar />
       <main>
         <Hero />
-        <LiveDonations />
         <About />
         <VisionMission />
         <Impact />
