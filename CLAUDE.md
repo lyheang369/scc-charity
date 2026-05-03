@@ -38,12 +38,10 @@ To add a new page: add a new hash condition in `App.jsx` and create the componen
 `main.jsx` wraps `<App>` in `<LanguageProvider>`. `App.jsx` renders sections in this order:
 
 ```
-Navbar → Hero → SponsorStrip → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Team → Sponsors → Organizers → Footer
+Navbar → Hero → About → VisionMission → Impact → EventDetails → HowToHelp → [Gallery — commented out] → Team → Sponsors → Organizers → Footer
 ```
 
 `Gallery` is imported but its JSX usage is commented out in `App.jsx` (`{/* <Gallery /> */}`) pending real images. Uncomment that line to restore it.
-
-`SponsorStrip` and `Sponsors` both render from the same `sponsors.brands` array in `content.js` — adding/removing a brand updates both the slim above-the-fold strip and the full sponsors section.
 
 ### Bilingual system
 
@@ -56,7 +54,7 @@ Every component calls `const t = useTranslation()` and reads text as `t.section.
 Notable non-obvious keys:
 - `event.poster` — object with bilingual text for the styled poster card in `EventDetails`
 - `donate.khqr` — object for the KHQR donation QR section on the donate page
-- `sponsors.brands` — array of sponsor objects (`key`, `name`, `type`, `description`); `type` is either `inKind` or `financial` and maps to a labeled badge in `Sponsors.jsx` and a tiny role label in `SponsorStrip.jsx`
+- `sponsors.brands` — array of sponsor objects (`key`, `name`, `type`, `description`); `type` is either `inKind` or `financial` and maps to a labeled badge in `Sponsors.jsx`
 - `organizers.organizedBy` / `supportedBy` / `scc` / `camed` — per-logo role labels and names rendered in `Organizers.jsx`
 
 **`impact.stats[].number` must use Western Arabic digits** (e.g. `"270+"`, `"3"`, `"100%"`), never Khmer numerals. The `parseStat()` helper in `Impact.jsx` uses `/^(\\d+)/` which only matches `[0-9]`. Using Khmer digit characters causes the count-up to show `0` as a prefix.
@@ -93,9 +91,7 @@ The `hero` section uses `rotatingPhrases` (an array) instead of a single string 
 
 **`Sponsors`** — two-card grid; each card pulls logo from `public/logos/{brand.key}.webp`. The `brand.type` (`inKind` | `financial`) selects the badge styling and icon (`Sparkles` for in-kind, `Heart` for financial).
 
-**`SponsorStrip`** — slim above-the-fold strip rendered between `Hero` and `About`. Reads from the same `sponsors.brands` array as `Sponsors`; uses `sponsors.stripEyebrow` and `sponsors.typeInKind`/`typeFinancial` for the per-logo role label. Each item links to `#sponsors`.
-
-**`Organizers`** — two-logo footer-adjacent block. Each entry shows a per-logo role label (`organizers.organizedBy` for SCC, `organizers.supportedBy` for CamEd). Renders from a local `entries` array — there is no shared data file.
+**`Organizers`** — two-logo footer-adjacent block. Each entry shows a colored pill role label (`organizers.organizedBy` orange for SCC, `organizers.supportedBy` cyan for CamEd). Renders from a local `entries` array — there is no shared data file.
 
 ### Tailwind v4 theme
 
