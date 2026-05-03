@@ -11,7 +11,6 @@ export default function Organizers() {
       name: o.scc,
       src: `${import.meta.env.BASE_URL}logos/scc.svg`,
       alt: 'Smile of Cambodian Children',
-      logoBg: 'bg-white p-3',
       pill: 'bg-orange/10 text-orange',
     },
     {
@@ -19,7 +18,6 @@ export default function Organizers() {
       name: o.camed,
       src: `${import.meta.env.BASE_URL}logos/CamEd_Logo.png`,
       alt: 'CamEd Business School',
-      logoBg: '',
       pill: 'bg-green/10 text-green',
     },
   ];
@@ -28,11 +26,11 @@ export default function Organizers() {
     <section className="pt-4 pb-12 md:pb-16 bg-sand">
       <div className="max-w-5xl mx-auto px-5 md:px-8">
         <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+          <div className="flex flex-wrap items-start justify-center gap-10 md:gap-16">
             {entries.map((e) => (
               <div
                 key={e.alt}
-                className="bg-white rounded-2xl px-6 py-7 md:py-8 shadow-sm shadow-navy/5 flex flex-col items-center text-center gap-4 group hover:-translate-y-0.5 transition-transform duration-200"
+                className="flex flex-col items-center text-center gap-4 group max-w-xs"
               >
                 <span
                   className={`inline-block text-[11px] font-semibold tracking-[0.18em] uppercase px-3 py-1 rounded-full ${e.pill}`}
@@ -44,7 +42,7 @@ export default function Organizers() {
                   alt={e.alt}
                   width="96"
                   height="96"
-                  className={`rounded-xl drop-shadow-md group-hover:scale-105 transition-transform ${e.logoBg}`}
+                  className="group-hover:scale-105 transition-transform"
                 />
                 <span className="text-sm md:text-base font-semibold text-navy">{e.name}</span>
               </div>
