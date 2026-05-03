@@ -94,6 +94,27 @@ const content = {
       label: "Supported By",
       camed: "CamEd Business School",
     },
+    sponsors: {
+      eyebrow: "With Gratitude",
+      headline: "Our Generous Sponsors",
+      description: "Thank you to the brands whose support powers our campaign. Their generosity directly reaches the children we serve.",
+      typeInKind: "In-Kind Sponsor",
+      typeFinancial: "Sponsor",
+      brands: [
+        {
+          key: "floral",
+          name: "Floral Milk Tea & Dessert",
+          type: "inKind",
+          description: "A local Cambodian milk tea and dessert shop crafting refreshing handcrafted drinks and sweet treats. Floral generously supports our outreach with in-kind contributions to bring smiles to every child we visit.",
+        },
+        {
+          key: "rourm",
+          name: "Rourm",
+          type: "financial",
+          description: "A proud financial sponsor of our campaign. Rourm’s generous contribution helps put essential school supplies directly into the hands of underprivileged children in Siem Reap.",
+        },
+      ],
+    },
     donate: {
       eyebrow: "Make a Difference",
       headline: "Support Our Campaign",
@@ -255,6 +276,27 @@ const content = {
     organizers: {
       label: "គាំទ្រដោយ",
       camed: "CamEd Business School",
+    },
+    sponsors: {
+      eyebrow: "ដោយក្ដីដឹងគុណ",
+      headline: "ម្ចាស់ឧបត្ថម្ភដ៏សប្បុរសរបស់យើង",
+      description: "សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅដល់ម្ចាស់ឧបត្ថម្ភទាំងអស់ ដែលក្តីសប្បុរសរបស់ពួកគាត់ បានជួយជូនយុទ្ធនាការរបស់យើងទៅដល់កុមារដែលត្រូវការ។",
+      typeInKind: "ឧបត្ថម្ភសម្ភារៈ",
+      typeFinancial: "ម្ចាស់ឧបត្ថម្ភ",
+      brands: [
+        {
+          key: "floral",
+          name: "Floral Milk Tea & Dessert",
+          type: "inKind",
+          description: "ហាងតែទឹកដោះ និងបង្អែម Floral នៅកម្ពុជា ដែលផលិតភេសជ្ជៈ និងបង្អែមដោយដៃ។ Floral បានឧបត្ថម្ភជាសម្ភារៈសម្រាប់យុទ្ធនាការ ដើម្បីនាំស្នាមញញឹមមកដល់កុមារដែលយើងជួប។",
+        },
+        {
+          key: "rourm",
+          name: "Rourm",
+          type: "financial",
+          description: "ម្ចាស់ឧបត្ថម្ភហិរញ្ញវត្ថុដ៏សប្បុរសនៃយុទ្ធនាការរបស់យើង។ ការចូលរួមរបស់ Rourm ជួយផ្តល់សម្ភារៈសិក្សាចាំបាច់ដោយផ្ទាល់ដល់កុមារខ្វះខាតនៅខេត្តសៀមរាប។",
+        },
+      ],
     },
     donate: {
       eyebrow: "ចូលរួមបង្កើតការផ្លាស់ប្តូរ",
