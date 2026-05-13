@@ -55,7 +55,7 @@ const BASE = import.meta.env.BASE_URL
 
 const LOGO_ENTRIES = [
   { src: `${BASE}logos/scc-white.svg`,    alt: 'SCC logo',    label: 'Organized by' },
-  { src: `${BASE}logos/CamEd_Logo.webp`,  alt: 'CamEd logo',  label: 'Supported by' },
+  { src: `${BASE}logos/CamEd_Logo.webp`,  alt: 'CamEd logo',  label: 'Supported by', invert: true },
   { src: `${BASE}logos/floral.webp`,      alt: 'Floral logo',  label: 'In-Kind Sponsor' },
   { src: `${BASE}logos/rourm.webp`,       alt: 'Rourm logo',   label: 'Sponsor' },
 ]
@@ -91,6 +91,7 @@ function LogoCarousel() {
           transition: 'opacity 0.5s ease, transform 0.5s ease',
           opacity: visible ? 0.8 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(-6px)',
+          filter: entry.invert ? 'brightness(0) invert(1)' : undefined,
         }}
       />
       <span
