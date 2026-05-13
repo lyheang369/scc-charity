@@ -82,20 +82,9 @@ function LogoCarousel() {
   const entry = LOGO_ENTRIES[idx]
 
   return (
-    <div className="h-20 flex flex-col items-start justify-center">
-      <img
-        src={entry.src}
-        alt={entry.alt}
-        className="h-10 w-auto object-contain"
-        style={{
-          transition: 'opacity 0.5s ease, transform 0.5s ease',
-          opacity: visible ? 0.8 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
-          filter: entry.invert ? 'brightness(0) invert(1)' : undefined,
-        }}
-      />
+    <div className="h-24 flex flex-col items-start justify-center">
       <span
-        className="text-[9px] tracking-widest uppercase text-white/30 mt-1"
+        className="text-[9px] tracking-widest uppercase text-white/30 mb-2"
         style={{
           transition: 'opacity 0.5s ease',
           opacity: visible ? 1 : 0,
@@ -103,6 +92,17 @@ function LogoCarousel() {
       >
         {entry.label}
       </span>
+      <img
+        src={entry.src}
+        alt={entry.alt}
+        className="h-14 w-auto object-contain"
+        style={{
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          opacity: visible ? 0.8 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
+          filter: entry.invert ? 'brightness(0) invert(1)' : undefined,
+        }}
+      />
     </div>
   )
 }
