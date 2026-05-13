@@ -65,14 +65,18 @@ function LogoCarousel() {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const id = setInterval(() => {
+    let timeoutId
+    const intervalId = setInterval(() => {
       setVisible(false)
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIdx((prev) => (prev + 1) % LOGO_ENTRIES.length)
         setVisible(true)
       }, 500)
     }, 2500)
-    return () => clearInterval(id)
+    return () => {
+      clearInterval(intervalId)
+      clearTimeout(timeoutId)
+    }
   }, [])
 
   const entry = LOGO_ENTRIES[idx]
@@ -80,13 +84,12 @@ function LogoCarousel() {
   return (
     <div className="h-20 flex flex-col items-start justify-center">
       <img
-        key={idx}
         src={entry.src}
         alt={entry.alt}
-        className="h-10 w-auto object-contain opacity-80"
+        className="h-10 w-auto object-contain"
         style={{
           transition: 'opacity 0.5s ease, transform 0.5s ease',
-          opacity: visible ? 1 : 0,
+          opacity: visible ? 0.8 : 0,
           transform: visible ? 'translateY(0)' : 'translateY(-6px)',
         }}
       />

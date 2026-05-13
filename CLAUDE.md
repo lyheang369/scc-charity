@@ -127,6 +127,7 @@ A few UI strings are intentionally hardcoded and not in `content.js`:
 - `Navbar.jsx` — the two-line event name ("Smile of" / "Cambodian Children") and the mobile menu footer label
 - `Footer.jsx` — the brand name next to the logo
 - `LanguageToggle.jsx` — the "Language" dropdown header
+- `Hero.jsx` — the `LogoCarousel` role labels ("Organized by", "Supported by", "In-Kind Sponsor", "Sponsor")
 
 These are brand-identity strings that don't need translation. Do not move them to `content.js` unless specifically asked.
 
