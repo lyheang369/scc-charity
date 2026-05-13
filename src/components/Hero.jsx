@@ -72,7 +72,7 @@ function LogoCarousel() {
         setIdx((prev) => (prev + 1) % LOGO_ENTRIES.length)
         setVisible(true)
       }, 500)
-    }, 2500)
+    }, 4000)
     return () => {
       clearInterval(intervalId)
       clearTimeout(timeoutId)
