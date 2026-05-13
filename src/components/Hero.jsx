@@ -51,6 +51,58 @@ function RotatingPhrase({ phrases }) {
   );
 }
 
+const BASE = import.meta.env.BASE_URL
+
+const LOGO_ENTRIES = [
+  { src: `${BASE}logos/scc-white.svg`,    alt: 'SCC logo',    label: 'Organized by' },
+  { src: `${BASE}logos/CamEd_Logo.webp`,  alt: 'CamEd logo',  label: 'Supported by' },
+  { src: `${BASE}logos/floral.webp`,      alt: 'Floral logo',  label: 'In-Kind Sponsor' },
+  { src: `${BASE}logos/rourm.webp`,       alt: 'Rourm logo',   label: 'Sponsor' },
+]
+
+function LogoCarousel() {
+  const [idx, setIdx] = useState(0)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setIdx((prev) => (prev + 1) % LOGO_ENTRIES.length)
+        setVisible(true)
+      }, 500)
+    }, 2500)
+    return () => clearInterval(id)
+  }, [])
+
+  const entry = LOGO_ENTRIES[idx]
+
+  return (
+    <div className="h-20 flex flex-col items-start justify-center">
+      <img
+        key={idx}
+        src={entry.src}
+        alt={entry.alt}
+        className="h-10 w-auto object-contain opacity-80"
+        style={{
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
+        }}
+      />
+      <span
+        className="text-[9px] tracking-widest uppercase text-white/30 mt-1"
+        style={{
+          transition: 'opacity 0.5s ease',
+          opacity: visible ? 1 : 0,
+        }}
+      >
+        {entry.label}
+      </span>
+    </div>
+  )
+}
+
 export default function Hero() {
   const t = useTranslation();
 
@@ -90,6 +142,9 @@ export default function Hero() {
               </a>
             </div>
             <p className="text-xs tracking-wide text-white/30 uppercase animate-[fadeUp_0.8s_1s_ease_both]">{t.hero.trust}</p>
+            <div className="animate-[fadeUp_0.8s_1.1s_ease_both]">
+              <LogoCarousel />
+            </div>
           </div>
 
           <div className="md:col-span-2 flex md:justify-end animate-[fadeUp_0.8s_1s_ease_both]">
